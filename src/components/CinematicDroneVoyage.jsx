@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  STATE_DRONE_VOYAGES, 
+  CINEMATIC_JOURNEY_STAGES, 
   THEME_COLORS, 
   BUSINESS_INFO 
 } from '../data/tourismData';
@@ -8,46 +8,42 @@ import {
   Play, 
   Pause, 
   ChevronDown, 
-  ArrowRight, 
-  MessageCircle, 
-  MapPin, 
-  Bed, 
-  Calendar, 
-  Video, 
   Volume2, 
   VolumeX, 
+  Video, 
   Compass, 
-  Check 
+  Plane, 
+  Check, 
+  ArrowRight, 
+  Sparkles 
 } from 'lucide-react';
 import { soundManager } from '../utils/soundUtil';
 
-export default function CinematicDroneVoyage({ onOpenBookingModal }) {
-  const [activeIdx, setActiveIdx] = useState(0);
+export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoModal, onReplayFlightIntro }) {
+  const [activeStageIdx, setActiveStageIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
-  
+
   const trackRef = useRef(null);
   const videoRefs = useRef([]);
 
-  // Calculate slide index directly from scroll position (Sticky Scroll Storytelling)
+  // Calculate slide index from scroll position (Sticky Scroll Track)
   useEffect(() => {
     const handleScroll = () => {
       if (!trackRef.current) return;
       const rect = trackRef.current.getBoundingClientRect();
       const totalScrollable = trackRef.current.offsetHeight - window.innerHeight;
-      
+
       if (totalScrollable <= 0) return;
-      
-      // Calculate progress between 0 and 1
+
       const currentScroll = -rect.top;
       const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
       setScrollProgress(progress);
 
-      // Determine active slide index (0 to 3)
-      const numSlides = STATE_DRONE_VOYAGES.length;
-      const slideIndex = Math.min(numSlides - 1, Math.floor(progress * numSlides));
-      setActiveIdx(slideIndex);
+      const numStages = CINEMATIC_JOURNEY_STAGES.length;
+      const stageIndex = Math.min(numStages - 1, Math.floor(progress * numStages));
+      setActiveStageIdx(stageIndex);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -59,31 +55,29 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (vid) {
-        if (i === activeIdx) {
+        if (i === activeStageIdx) {
           vid.play().catch(() => {});
         }
       }
     });
-  }, [activeIdx]);
+  }, [activeStageIdx]);
 
-  const activeVoyage = STATE_DRONE_VOYAGES[activeIdx] || STATE_DRONE_VOYAGES[0];
+  const activeStage = CINEMATIC_JOURNEY_STAGES[activeStageIdx] || CINEMATIC_JOURNEY_STAGES[0];
 
-  // Scroll to a specific state slide
-  const scrollToSlide = (index) => {
+  // Scroll smoothly to a specific stage
+  const scrollToStage = (index) => {
     if (!trackRef.current) return;
     const trackTop = trackRef.current.offsetTop;
     const totalScrollable = trackRef.current.offsetHeight - window.innerHeight;
-    const targetY = trackTop + (index / (STATE_DRONE_VOYAGES.length - 1)) * totalScrollable;
+    const targetY = trackTop + (index / (CINEMATIC_JOURNEY_STAGES.length - 1)) * totalScrollable;
     window.scrollTo({ top: targetY, behavior: 'smooth' });
   };
 
-  // Scroll to the next state slide
-  const handleNextSlide = () => {
-    if (activeIdx < STATE_DRONE_VOYAGES.length - 1) {
-      scrollToSlide(activeIdx + 1);
+  const handleNextStage = () => {
+    if (activeStageIdx < CINEMATIC_JOURNEY_STAGES.length - 1) {
+      scrollToStage(activeStageIdx + 1);
     } else {
-      // Scroll down to the rest of the website
-      const exploreEl = document.getElementById('explore-sections');
+      const exploreEl = document.getElementById('website-sections');
       if (exploreEl) {
         exploreEl.scrollIntoView({ behavior: 'smooth' });
       }
@@ -96,7 +90,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
   };
 
   const toggleVideoPlay = () => {
-    const curVid = videoRefs.current[activeIdx];
+    const curVid = videoRefs.current[activeStageIdx];
     if (curVid) {
       if (isPlaying) {
         curVid.pause();
@@ -109,20 +103,20 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
 
   return (
     <div 
-      ref={trackRef} 
+      ref={trackRef}
       id="drone-voyage"
-      className="relative w-full h-[400vh] bg-[#0B4D3B]"
+      className="relative w-full h-[400vh] bg-[#051F17]"
     >
-      {/* Sticky Fullscreen Stage (Pinned while user scrolls) */}
+      {/* Sticky Fullscreen Screen Pinned Over Scroll */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between text-white">
         
-        {/* Layered 4K Background Drone Videos with Smooth Crossfade */}
+        {/* Layered 4K Drone Background Videos with Crossfade */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {STATE_DRONE_VOYAGES.map((voyage, idx) => {
-            const isActive = idx === activeIdx;
+          {CINEMATIC_JOURNEY_STAGES.map((stage, idx) => {
+            const isActive = idx === activeStageIdx;
             return (
               <div 
-                key={voyage.id}
+                key={stage.id}
                 className={`absolute inset-0 transition-all duration-1000 ease-out ${
                   isActive 
                     ? 'opacity-100 scale-100 z-10' 
@@ -135,39 +129,36 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
                   loop
                   muted
                   playsInline
-                  poster={voyage.posterImage}
-                  className="w-full h-full object-cover object-center filter brightness-[0.72] contrast-[1.08] transition-transform duration-700"
+                  poster={stage.posterImage}
+                  className="w-full h-full object-cover object-center filter brightness-[0.7] contrast-[1.1] transition-transform duration-700"
                 >
-                  {/* Priority to local video path if user drops files into public/videos/ */}
-                  <source src={voyage.localVideoPath} type="video/mp4" />
-                  <source src={voyage.droneVideo} type="video/mp4" />
+                  <source src={stage.localVideo} type="video/mp4" />
+                  <source src={stage.droneVideo} type="video/mp4" />
                 </video>
               </div>
             );
           })}
 
-          {/* Gradients matching #0B4D3B for crisp contrast & cinematic readability */}
-          <div className="absolute inset-0 z-15 bg-gradient-to-r from-[#0B4D3B]/95 via-[#0B4D3B]/60 to-black/45"></div>
-          <div className="absolute inset-0 z-15 bg-gradient-to-t from-[#0B4D3B] via-transparent to-black/70"></div>
+          {/* Gradients matching #0B4D3B -> #147D64 from UI Spec */}
+          <div className="absolute inset-0 z-15 bg-gradient-to-r from-[#0B4D3B]/90 via-[#0B4D3B]/50 to-[#0B4D3B]/80"></div>
+          <div className="absolute inset-0 z-15 bg-gradient-to-t from-[#0B4D3B] via-transparent to-black/75"></div>
         </div>
 
-        {/* Top HUD Bar */}
-        <div className="relative z-30 pt-24 px-4 sm:px-8 max-w-7xl mx-auto w-full flex items-center justify-between">
+        {/* Top Spacer under Navbar */}
+        <div className="pt-24 px-6 sm:px-12 max-w-7xl mx-auto w-full flex items-center justify-between relative z-30">
           
-          {/* Drone Status Pill */}
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#F4B400]/40 text-xs text-[#F4B400] shadow-lg">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
-            <Video className="w-3.5 h-3.5" />
+          {/* Timeline Badge */}
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#E7CFA3]/40 text-xs text-[#E7CFA3]">
+            <span className="w-2 h-2 rounded-full bg-[#F4B400] animate-ping"></span>
             <span className="font-bold tracking-wider uppercase text-[10px] sm:text-xs">
-              {activeVoyage.droneBadge}
+              STAGE 0{activeStage.stageNumber} • {activeStage.timecode}
             </span>
           </div>
 
-          {/* Audio & Video Controls */}
+          {/* Sound & Controls */}
           <div className="flex items-center gap-2">
             <button
               onClick={toggleSound}
-              title={isMuted ? "Enable Ambient Sound" : "Mute Sound"}
               className={`p-2 sm:px-3 sm:py-1.5 rounded-full backdrop-blur-md border text-xs font-semibold flex items-center gap-1.5 transition-all ${
                 isMuted 
                   ? 'bg-black/50 border-white/20 text-slate-300 hover:text-white' 
@@ -175,12 +166,12 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
               }`}
             >
               {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-              <span className="hidden sm:inline">{isMuted ? 'Ambient Audio' : 'Playing Audio'}</span>
+              <span className="hidden sm:inline">{isMuted ? 'Mute' : 'Audio On'}</span>
             </button>
 
             <button
               onClick={toggleVideoPlay}
-              className="p-2 sm:px-3 sm:py-1.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/20 text-xs text-white flex items-center gap-1.5 transition-all"
+              className="p-2 sm:px-3 sm:py-1.5 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md border border-white/20 text-xs text-white flex items-center gap-1.5"
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5 text-[#F4B400]" /> : <Play className="w-3.5 h-3.5 text-[#F4B400]" />}
               <span className="hidden sm:inline">{isPlaying ? 'Pause' : 'Play'}</span>
@@ -189,199 +180,119 @@ export default function CinematicDroneVoyage({ onOpenBookingModal }) {
 
         </div>
 
-        {/* Center Content: Crisp, Punchy, Animated Slide Overlay */}
-        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-8 py-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1">
+        {/* Center Main Stage Content matching Mockup Laptop Screen */}
+        <div className="relative z-30 max-w-5xl mx-auto px-6 text-center flex flex-col items-center justify-center flex-1 my-auto">
           
-          {/* Left Column: State Identity & Stays (Span 7) */}
-          <div className="lg:col-span-7 space-y-4 animate-fade-in">
-            
-            {/* State Number & Location Badge */}
-            <div className="flex items-center gap-2.5">
-              <span className="px-3 py-1 rounded-full bg-[#F4B400] text-[#1F2937] text-xs font-extrabold tracking-wider uppercase shadow-md">
-                STATE {activeVoyage.stateNumber} OF 04
-              </span>
-              <span className="text-white text-sm font-semibold tracking-wide flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-[#F4B400]" />
-                {activeVoyage.primaryLocation}
-              </span>
-            </div>
-
-            {/* Giant State Heading */}
-            <div className="space-y-1">
-              <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-tight tracking-tight drop-shadow-2xl">
-                {activeVoyage.stateName}
-              </h1>
-              <p className="text-base sm:text-xl font-bold text-[#FFD166] drop-shadow">
-                {activeVoyage.tagline}
-              </p>
-              <p className="text-xs sm:text-sm text-slate-200 max-w-xl leading-relaxed">
-                {activeVoyage.description}
-              </p>
-            </div>
-
-            {/* Crisp Stay Details Card */}
-            <div className="p-4 rounded-2xl bg-[#0B4D3B]/90 backdrop-blur-xl border border-[#F4B400]/40 shadow-2xl max-w-2xl">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#F4B400] uppercase tracking-wider mb-2.5 pb-2 border-b border-white/10">
-                <Bed className="w-4 h-4" />
-                <span>{activeVoyage.stayDetails.title}</span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {activeVoyage.stayDetails.options.map((opt, oIdx) => (
-                  <div 
-                    key={oIdx}
-                    className="p-2.5 rounded-xl bg-black/40 border border-[#147D64]/30"
-                  >
-                    <span className="text-[10px] font-bold text-[#F4B400] uppercase block">
-                      {opt.type}
-                    </span>
-                    <div className="font-bold text-xs text-white leading-snug mt-0.5">
-                      {opt.name}
-                    </div>
-                    <p className="text-[10px] text-slate-300 mt-1 leading-tight line-clamp-2">
-                      {opt.perk}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Highlights Chips */}
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              {activeVoyage.highlights.map((h, i) => (
-                <span 
-                  key={i}
-                  className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-emerald-500/30 text-[11px] text-emerald-200 flex items-center gap-1.5"
-                >
-                  <Check className="w-3 h-3 text-[#F4B400]" />
-                  {h}
-                </span>
-              ))}
-            </div>
-
+          {/* "EXPLORE SOUTH INDIA" in spaced Sandal #E7CFA3 */}
+          <div className="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.35em] text-[#E7CFA3] drop-shadow-md mb-2">
+            {activeStage.titlePrefix}
           </div>
 
-          {/* Right Column: Tour Package & State Stepper (Span 5) */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          {/* Majestic State Name in Italic Serif with Golden Flourish Underline */}
+          <div className="relative inline-block my-2">
+            <h1 className="font-heading italic text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight">
+              {activeStage.stateName}
+            </h1>
             
-            {/* Crisp Tour Package Card */}
-            <div className="p-6 rounded-3xl bg-[#0B4D3B]/90 backdrop-blur-xl border border-[#F4B400]/50 shadow-2xl relative overflow-hidden">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#FFD166] px-2.5 py-1 rounded-md bg-black/40 border border-[#F4B400]/30">
-                  {activeVoyage.featuredPackage.duration}
-                </span>
-                <span className="text-[10px] uppercase font-bold text-[#F4B400]">
-                  TOUR PACKAGE
-                </span>
+            {/* Golden Curved Flourish Underline as in user blueprint */}
+            <svg 
+              className="w-full h-8 sm:h-12 -mt-2 sm:-mt-4 text-[#F4B400]" 
+              viewBox="0 0 300 30" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M10 20 C 70 5, 120 30, 180 15 C 230 2, 270 20, 290 12" 
+                stroke="url(#flourishGrad)" 
+                strokeWidth="4" 
+                strokeLinecap="round"
+                className="flourish-animated"
+              />
+              <defs>
+                <linearGradient id="flourishGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#F4B400" />
+                  <stop offset="50%" stopColor="#E7CFA3" />
+                  <stop offset="100%" stopColor="#F4B400" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          {/* Subtitle / Tagline from blueprint */}
+          <p className="text-base sm:text-xl font-bold text-[#E7CFA3] mt-1 drop-shadow tracking-wide">
+            {activeStage.tagline}
+          </p>
+          <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-xl font-medium drop-shadow">
+            {activeStage.famousSpots}
+          </p>
+
+          {/* Watch Video Pill Button from Mockup */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={() => onOpenVideoModal(activeStage)}
+              className="px-8 py-3.5 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-[#E7CFA3]/60 text-white font-bold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 glow-sandal"
+            >
+              <div className="w-6 h-6 rounded-full bg-[#F4B400] text-[#0B4D3B] flex items-center justify-center font-bold">
+                <Play className="w-3.5 h-3.5 fill-[#0B4D3B]" />
               </div>
+              <span>Watch Video</span>
+            </button>
 
-              <h3 className="font-heading text-xl sm:text-2xl font-bold text-white leading-snug">
-                {activeVoyage.featuredPackage.title}
-              </h3>
-
-              {/* Price */}
-              <div className="mt-3 flex items-baseline gap-2 p-3 rounded-xl bg-black/40 border border-white/10">
-                <span className="text-xs text-slate-300">Starts from</span>
-                <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#F4B400] leading-none">
-                  {activeVoyage.featuredPackage.price}
-                </span>
-                <span className="text-[10px] text-slate-400">/ person</span>
-              </div>
-
-              {/* Route */}
-              <div className="mt-3 text-xs text-slate-200 flex items-start gap-2">
-                <Compass className="w-4 h-4 text-[#F4B400] shrink-0 mt-0.5" />
-                <span className="leading-tight">
-                  <strong>Route:</strong> {activeVoyage.featuredPackage.route}
-                </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
-                <button
-                  onClick={() => onOpenBookingModal({
-                    destination: activeVoyage.primaryLocation,
-                    state: activeVoyage.stateName,
-                    tourType: activeVoyage.featuredPackage.title,
-                    packageId: activeVoyage.featuredPackage.id
-                  })}
-                  className="flex-1 py-3 px-4 rounded-xl bg-[#F4B400] hover:bg-[#e0a600] text-[#1F2937] font-extrabold text-xs sm:text-sm shadow-xl shadow-[#F4B400]/25 hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2 glow-gold"
-                >
-                  <span>Book This Package</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <a
-                  href={`https://wa.me/916380939670?text=Hi%20South%20Indian%20Tourism%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(activeVoyage.stateName)}%20(${encodeURIComponent(activeVoyage.primaryLocation)})%20tour%20package.`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="py-3 px-4 rounded-xl bg-[#147D64] hover:bg-[#0f6752] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow transition-all hover:scale-102"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>WhatsApp</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Clickable State Stepper */}
-            <div className="p-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 grid grid-cols-4 gap-1.5">
-              {STATE_DRONE_VOYAGES.map((voyage, idx) => {
-                const isSelected = idx === activeIdx;
-                return (
-                  <button
-                    key={voyage.id}
-                    onClick={() => scrollToSlide(idx)}
-                    className={`py-2 px-1 rounded-xl text-center transition-all ${
-                      isSelected 
-                        ? 'bg-[#F4B400] text-[#1F2937] font-extrabold shadow-lg scale-102 ring-2 ring-[#FFD166]' 
-                        : 'hover:bg-white/10 text-slate-300'
-                    }`}
-                  >
-                    <span className="text-[10px] block opacity-80 leading-none">
-                      {voyage.stateNumber}
-                    </span>
-                    <span className="text-[11px] font-bold truncate block mt-0.5">
-                      {voyage.stateName.split(' ')[0]}
-                    </span>
-                  </button>
-                );
+            <button
+              onClick={() => onOpenBookingModal({
+                destination: activeStage.famousSpots,
+                state: activeStage.stateName
               })}
-            </div>
-
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F4B400] to-[#E7CFA3] hover:from-[#e5a700] hover:to-[#dfc38f] text-[#0B4D3B] font-extrabold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 glow-gold"
+            >
+              <span>Plan Trip to {activeStage.stateName.split(' ')[0]}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Animated Scroll Progress Bar & Next Video Prompt */}
-        <div className="relative z-30 pb-5 px-4 max-w-7xl mx-auto w-full">
+        {/* Bottom Navigation & Scroll to Explore */}
+        <div className="relative z-30 pb-6 px-6 sm:px-12 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           
-          {/* Real-time Dynamic Scroll Progress Bar */}
-          <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden mb-3">
-            <div 
-              className="h-full bg-gradient-to-r from-[#147D64] via-[#F4B400] to-[#FFD166] transition-all duration-300"
-              style={{ width: `${Math.max(10, scrollProgress * 100)}%` }}
-            ></div>
-          </div>
+          {/* Left: Replay Flight Intro */}
+          <button
+            onClick={onReplayFlightIntro}
+            className="text-xs font-bold text-[#E7CFA3] hover:text-[#F4B400] flex items-center gap-1.5 transition-colors"
+          >
+            <Plane className="w-3.5 h-3.5" />
+            <span>Replay Flight Map Intro (0 - 10s)</span>
+          </button>
 
-          <div className="flex items-center justify-between">
-            {/* Scroll Indicator */}
-            <div className="text-[11px] font-semibold text-slate-300 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#F4B400] animate-ping"></span>
-              <span>Scroll down to fly across South Indian States</span>
-            </div>
+          {/* Center: "Scroll to Explore" from Mockup */}
+          <button
+            onClick={handleNextStage}
+            className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition-transform"
+          >
+            <span className="text-[11px] font-bold text-[#E7CFA3] tracking-widest uppercase flex items-center gap-1">
+              Scroll to Explore
+            </span>
+            <ChevronDown className="w-5 h-5 text-[#F4B400] animate-bounce mt-0.5" />
+          </button>
 
-            {/* Next Video Button */}
-            <button
-              onClick={handleNextSlide}
-              className="px-4 py-2 rounded-full bg-[#147D64] hover:bg-[#0f6752] text-white text-xs font-bold flex items-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all"
-            >
-              <span>
-                {activeIdx < STATE_DRONE_VOYAGES.length - 1 
-                  ? `Next Video: ${STATE_DRONE_VOYAGES[activeIdx + 1].stateName}` 
-                  : 'Explore All Destinations'}
-              </span>
-              <ChevronDown className="w-4 h-4 text-[#F4B400] animate-bounce" />
-            </button>
+          {/* Right: Stage Stepper Pills */}
+          <div className="flex items-center gap-1.5">
+            {CINEMATIC_JOURNEY_STAGES.map((stage, idx) => {
+              const isSelected = idx === activeStageIdx;
+              return (
+                <button
+                  key={stage.id}
+                  onClick={() => scrollToStage(idx)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    isSelected 
+                      ? 'bg-[#F4B400] text-[#0B4D3B] shadow-md scale-105' 
+                      : 'bg-black/50 text-slate-300 hover:text-white border border-white/20'
+                  }`}
+                >
+                  {stage.stateName.split(' ')[0]}
+                </button>
+              );
+            })}
           </div>
 
         </div>

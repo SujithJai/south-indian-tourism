@@ -1,129 +1,142 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import FlightMapIntro from './components/FlightMapIntro';
 import CinematicDroneVoyage from './components/CinematicDroneVoyage';
-import CategoryStrip from './components/CategoryStrip';
-import PopularDestinationsSection from './components/PopularDestinationsSection';
-import TripBannerCTA from './components/TripBannerCTA';
+import WebsiteSectionsGrid from './components/WebsiteSectionsGrid';
 import FeaturedPackagesSection from './components/FeaturedPackagesSection';
-import ShivaTempleSection from './components/ShivaTempleSection';
-import VehicleFleetSection from './components/VehicleFleetSection';
 import PlanYourTripSection from './components/PlanYourTripSection';
-import TestimonialsSection from './components/TestimonialsSection';
-import FaqSection from './components/FaqSection';
-import AboutUsSection from './components/AboutUsSection';
-import ContactUsSection from './components/ContactUsSection';
 import Footer from './components/Footer';
+import WatchVideoModal from './components/WatchVideoModal';
+import SectionDetailModal from './components/SectionDetailModal';
 import DestinationSearchModal from './components/DestinationSearchModal';
 import BookingModal from './components/BookingModal';
 import FloatingActions from './components/FloatingActions';
+import { CINEMATIC_JOURNEY_STAGES } from './data/tourismData';
 
 export default function App() {
+  const [showFlightIntro, setShowFlightIntro] = useState(true);
+  const [isIntroFading, setIsIntroFading] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [modalInitialData, setModalInitialData] = useState(null);
+  
+  // Watch Video Modal state
+  const [activeVideoModalStage, setActiveVideoModalStage] = useState(null);
+
+  // Section Detail Modal state (for the 6 website section cards)
+  const [activeSectionCardId, setActiveSectionCardId] = useState(null);
+
+  const handleFinishIntro = () => {
+    setIsIntroFading(true);
+    setTimeout(() => {
+      setShowFlightIntro(false);
+      setIsIntroFading(false);
+    }, 900);
+  };
+
+  const handleReplayIntro = () => {
+    setIsIntroFading(false);
+    setShowFlightIntro(true);
+  };
 
   const handleOpenBooking = (data = null) => {
     setModalInitialData(data);
     setIsBookingModalOpen(true);
   };
 
-  const handleSelectDestination = (dest) => {
-    handleOpenBooking({
-      destination: dest.name,
-      category: dest.category
-    });
+  const handleOpenVideoModal = (stage) => {
+    setActiveVideoModalStage(stage);
   };
 
-  const handleSelectCategory = (catName) => {
-    handleOpenBooking({
-      tourType: `${catName} Tour`,
-      destination: catName === 'Temples' ? 'Madurai / Thanjavur' : catName === 'Hill Stations' ? 'Ooty / Munnar' : 'South India'
-    });
+  const handleSectionCardClick = (cardId) => {
+    if (cardId === 'plan-your-trip') {
+      handleOpenBooking();
+    } else {
+      setActiveSectionCardId(cardId);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F7F4] text-[#1F2937] flex flex-col font-sans selection:bg-[#F4B400] selection:text-[#1F2937]">
+    <div className="min-h-screen bg-[#F8F4E6] text-[#5A3E2B] flex flex-col font-sans selection:bg-[#F4B400] selection:text-[#0B4D3B]">
       
-      {/* Top Fixed Navbar */}
+      {/* 1. Opening Flight Map Animation (0 - 10s) with Cinematic Dissolve into Hero */}
+      {showFlightIntro && (
+        <div 
+          className={`fixed inset-0 z-50 transition-opacity duration-1000 ease-in-out ${
+            isIntroFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        >
+          <FlightMapIntro onCompleteIntro={handleFinishIntro} />
+        </div>
+      )}
+
+      {/* Top Fixed Minimal Luxury Navbar */}
       <Navbar 
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenBookingModal={() => handleOpenBooking()}
       />
 
       <main className="flex-1">
-        {/* 1. Cinematic Fullscreen 4K Drone Voyage (Tamil Nadu -> Kerala -> Karnataka -> Andhra Pradesh) */}
+        {/* 2. Full-Page Scroll-Driven Cinematic Drone Voyage (Tamil Nadu -> Kerala -> Karnataka -> Andhra & Telangana) */}
         <CinematicDroneVoyage 
-          onOpenBookingModal={(data) => handleOpenBooking(data)}
+          onOpenBookingModal={handleOpenBooking}
+          onOpenVideoModal={handleOpenVideoModal}
+          onReplayFlightIntro={handleReplayIntro}
         />
 
-        {/* 2. Category Strip from UI Reference Guide (Temples, Hill Stations, Beaches, Backwaters, Wildlife, Culture) */}
-        <div id="explore-sections">
-          <CategoryStrip onSelectCategory={handleSelectCategory} />
+        {/* 3. The 6 Website Section Cards (After the Video Journey - After 50s) */}
+        <WebsiteSectionsGrid 
+          onCardClick={handleSectionCardClick}
+        />
+
+        {/* 4. Tours & Packages */}
+        <div id="packages-section">
+          <FeaturedPackagesSection 
+            onOpenBookingModal={(pkg) => handleOpenBooking(pkg)}
+          />
         </div>
 
-        {/* 3. Popular Destinations Section (Madurai, Munnar, Hampi, Pondicherry, Ooty, Coorg) */}
-        <PopularDestinationsSection 
-          onSelectDestination={handleSelectDestination}
-        />
-
-        {/* 4. Plan Your South India Trip Banner CTA */}
-        <TripBannerCTA 
-          onOpenBookingModal={() => handleOpenBooking()}
-        />
-
-        {/* 5. Featured Tour Packages (5, 6, 7 Days) */}
-        <FeaturedPackagesSection 
-          onOpenBookingModal={(pkg) => handleOpenBooking(pkg)}
-        />
-
-        {/* 6. Dedicated Shiva Temple Tours */}
-        <ShivaTempleSection 
-          onOpenBookingModal={(data) => handleOpenBooking(data)}
-        />
-
-        {/* 7. Luxury Vehicle & Tempo Traveller Fleet */}
-        <VehicleFleetSection 
-          onOpenBookingModal={(data) => handleOpenBooking(data)}
-        />
-
-        {/* 8. Plan Your Perfect Trip - Lead Generation Quote Form */}
+        {/* 5. Plan Your Trip Form */}
         <PlanYourTripSection 
           initialData={modalInitialData}
         />
-
-        {/* 9. Traveller Stories / Testimonials */}
-        <TestimonialsSection />
-
-        {/* 10. Frequently Asked Questions */}
-        <FaqSection />
-
-        {/* 11. About Us (Mohanur, Namakkal) */}
-        <AboutUsSection />
-
-        {/* 12. Contact Us */}
-        <ContactUsSection 
-          onOpenBookingModal={() => handleOpenBooking()}
-        />
       </main>
 
-      {/* 13. Complete Footer */}
-      <Footer 
-        onSelectDestination={handleSelectDestination}
-      />
+      {/* 6. Footer in Deep Green #0B4D3B & Sandal #E7CFA3 */}
+      <div id="about-section">
+        <Footer 
+          onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
+        />
+      </div>
 
       {/* Floating Action Hub (WhatsApp & Phone) */}
       <FloatingActions 
         onOpenBookingModal={() => handleOpenBooking()}
       />
 
+      {/* Watch Video Fullscreen Modal */}
+      <WatchVideoModal 
+        isOpen={!!activeVideoModalStage}
+        stageData={activeVideoModalStage}
+        onClose={() => setActiveVideoModalStage(null)}
+        onOpenBooking={handleOpenBooking}
+      />
+
+      {/* Section Detail Modal (for 6 cards) */}
+      <SectionDetailModal 
+        activeCardId={activeSectionCardId}
+        onClose={() => setActiveSectionCardId(null)}
+        onOpenBooking={handleOpenBooking}
+      />
+
       {/* Destination Search Modal */}
       <DestinationSearchModal 
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        onSelectDestination={handleSelectDestination}
+        onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
       />
 
-      {/* Quick Booking Modal */}
+      {/* Booking / Enquiry Modal */}
       <BookingModal 
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}

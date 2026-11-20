@@ -17,36 +17,28 @@ export default function Footer({ onSelectDestination }) {
 
   return (
     <footer className="bg-[#0B4D3B] text-slate-300 border-t border-[#147D64]/30">
-      
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 pb-12">
         
-        {/* 4-Column Grid matching business structure */}
+        {/* 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           
           {/* Column 1: Business Information */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#FFD166] flex items-center justify-center text-[#0B4D3B] shadow-md shadow-[#F4B400]/30">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
                 </svg>
               </div>
-              <div>
-                <span className="font-heading text-lg font-bold text-white block leading-tight">
-                  {BUSINESS_INFO.name}
-                </span>
-                <span className="text-[10px] tracking-widest uppercase text-[#F4B400] font-semibold">
-                  Mohanur, Namakkal
-                </span>
-              </div>
+              <span className="font-heading text-xl font-bold text-white block leading-tight">
+                South Indian Tourism
+              </span>
             </div>
 
             <p className="text-xs text-slate-200 leading-relaxed">
-              Your trusted partner for South India tour packages and Tempo Traveller services across Tamil Nadu, Kerala, Karnataka and Andhra Pradesh.
+              A video-first, scroll-based tourism platform taking you on a cinematic journey across Tamil Nadu, Kerala, Karnataka, and Andhra & Telangana.
             </p>
 
-            {/* Social & Contact Icons */}
             <div className="flex items-center gap-2.5 pt-2">
               <a
                 href={BUSINESS_INFO.whatsappLink}
@@ -78,24 +70,22 @@ export default function Footer({ onSelectDestination }) {
           <div className="space-y-4">
             <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#F4B400]"></span>
-              Quick Links
+              Navigation
             </h4>
             
             <ul className="space-y-2 text-xs">
               {[
-                { label: '4K Drone Voyage', href: '#drone-voyage' },
-                { label: 'Destinations', href: '#destinations' },
-                { label: 'Tour Packages', href: '#packages' },
-                { label: 'Shiva Temple Tours', href: '#shiva-temples' },
-                { label: 'Tempo Traveller Fleet', href: '#fleet' },
-                { label: 'Plan Your Trip', href: '#plan-trip' },
-                { label: 'About Us', href: '#about' },
-                { label: 'Contact Us', href: '#contact' }
+                { label: 'Destinations', href: '#drone-voyage' },
+                { label: 'Experiences', href: '#website-sections' },
+                { label: 'Tours & Packages', href: '#packages-section' },
+                { label: 'Travel Guide', href: '#website-sections' },
+                { label: 'Culture & Heritage', href: '#website-sections' },
+                { label: 'Plan Your Trip', href: '#plan-trip' }
               ].map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
-                    className="hover:text-[#F4B400] transition-colors flex items-center gap-1.5 group text-slate-200"
+                    className="hover:text-[#E7CFA3] transition-colors flex items-center gap-1.5 group text-slate-200"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#F4B400] group-hover:translate-x-1 transition-transform" />
                     <span>{link.label}</span>
@@ -105,25 +95,24 @@ export default function Footer({ onSelectDestination }) {
             </ul>
           </div>
 
-          {/* Column 3: Top Destinations */}
+          {/* Column 3: The 4 States */}
           <div className="space-y-4">
             <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#F4B400]"></span>
-              Top Destinations
+              The 4 States
             </h4>
 
             <ul className="space-y-2.5 text-xs">
               {[
-                { name: 'Ooty (Tamil Nadu)', desc: 'Misty Blue Mountains & Heritage Train' },
-                { name: 'Madurai (Tamil Nadu)', desc: 'Meenakshi Temple & Cultural Heart' },
-                { name: 'Munnar & Alleppey (Kerala)', desc: 'Houseboats & Tea Canopies' },
-                { name: 'Coorg & Hampi (Karnataka)', desc: 'Coffee Estates & UNESCO Ruins' },
-                { name: 'Tirupati (Andhra Pradesh)', desc: 'Divine Seven Sacred Hills' }
+                { name: 'Tamil Nadu', desc: 'Madurai, Rameswaram, Ooty, Thanjavur' },
+                { name: 'Kerala', desc: 'Munnar, Alleppey, Kovalam, Thekkady' },
+                { name: 'Karnataka', desc: 'Hampi, Coorg, Mysuru, Chikmagalur' },
+                { name: 'Andhra & Telangana', desc: 'Tirupati, Araku, Vizag, Hyderabad' }
               ].map((dest, idx) => (
                 <li key={idx}>
                   <a
                     href="#drone-voyage"
-                    className="block group hover:text-[#FFD166] transition-colors"
+                    className="block group hover:text-[#E7CFA3] transition-colors"
                   >
                     <div className="font-semibold text-white group-hover:text-[#F4B400] flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-[#F4B400]" />
@@ -179,7 +168,7 @@ export default function Footer({ onSelectDestination }) {
                 </a>
               </div>
 
-              <div className="flex items-center gap-2.5 pt-1 text-[11px] text-[#FFD166]">
+              <div className="flex items-center gap-2.5 pt-1 text-[11px] text-[#E7CFA3]">
                 <Clock className="w-3.5 h-3.5 shrink-0" />
                 <span>{BUSINESS_INFO.workingHours}</span>
               </div>
@@ -192,16 +181,15 @@ export default function Footer({ onSelectDestination }) {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-300">
           <div>
             <p>© 2026 <strong>South Indian Tourism</strong>. All rights reserved.</p>
-            <p className="text-[11px] text-[#FFD166] mt-0.5 font-medium">
-              Service Coverage: Tamil Nadu, Kerala, Karnataka and Andhra Pradesh.
+            <p className="text-[11px] text-[#E7CFA3] mt-0.5 font-medium">
+              Tamil Nadu • Kerala • Karnataka • Andhra & Telangana
             </p>
           </div>
 
-          {/* Quick CTAs */}
           <div className="flex items-center gap-4">
             <a
               href={`tel:${BUSINESS_INFO.primaryPhone}`}
-              className="px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-[#FFD166] text-xs font-semibold hover:border-[#F4B400]"
+              className="px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-[#E7CFA3] text-xs font-semibold hover:border-[#F4B400]"
             >
               Direct Call
             </a>
@@ -224,7 +212,6 @@ export default function Footer({ onSelectDestination }) {
         </div>
 
       </div>
-
     </footer>
   );
 }
