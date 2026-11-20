@@ -38,7 +38,7 @@ export default function AboutUsSection() {
                 <span>30+ Destinations</span>
               </div>
               <p className="text-[11px] text-[#6B7280] leading-tight">
-                Curated across Tamil Nadu, Karnataka, Kerala & Andhra Pradesh.
+                Curated tours across Tamil Nadu, Karnataka, Kerala & Andhra Pradesh.
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function AboutUsSection() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E6] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold">
               <Compass className="w-3.5 h-3.5 text-[#147D64]" />
-              <span>About South Indian Tourism • எங்கள் வரலாறு</span>
+              <span>About South Indian Tourism</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight leading-tight">
@@ -56,11 +56,11 @@ export default function AboutUsSection() {
             </h2>
 
             <p className="text-[#1F2937] text-sm sm:text-base leading-relaxed">
-              <strong>South Indian Tourism</strong> மோகனூர் (நாமக்கல் மாவட்டம், தமிழ்நாடு) நகரை தலைமையிடமாகக் கொண்டு, தென்னிந்தியாவின் பாரம்பரிய இடங்கள், மலைவாசஸ்தலங்கள், கடற்கரைகள் மற்றும் ஆன்மீக தலங்களுக்கான தனிப்பயனாக்கப்பட்ட (Customized) பயணங்களை மிகச் சிறந்த முறையில் ஒருங்கிணைத்து வருகிறது.
+              <strong>South Indian Tourism</strong>, headquartered in Mohanur (Namakkal District, Tamil Nadu), is a premier tour operator specializing in bespoke itineraries across South India's historic temple circuits, hill stations, backwaters, and pristine coastlines.
             </p>
 
             <p className="text-[#6B7280] text-xs sm:text-sm leading-relaxed">
-              15 ஆண்டுகளுக்கும் மேலான பயண நிபுணத்துவத்துடன், குடும்பத்தினர், நண்பர்கள் குழுக்கள் மற்றும் பக்தர்கள் எளிதாகவும் பாதுகாப்பாகவும் மன நிறைவோடு பயணிக்கும் வகையில் எங்கள் அதிநவீன ஏசி புஷ்பேக் டெம்போ டிராவலர்கள் மற்றும் அனுபவம் வாய்ந்த ஓட்டுநர்கள் சேவையில் ஈடுபடுகின்றனர்.
+              With over 15 years of regional travel expertise, we deliver seamless journeys for families, couples, and groups with luxury pushback AC Tempo Travellers, premium Innova Crystas, and courteous verified drivers.
             </p>
 
             {/* Highlights List */}

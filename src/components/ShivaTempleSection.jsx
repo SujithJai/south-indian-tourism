@@ -5,21 +5,20 @@ import { Sparkles, MapPin, Phone, MessageCircle } from 'lucide-react';
 export default function ShivaTempleSection({ onOpenBookingModal }) {
   return (
     <section id="shiva-temples" className="py-20 bg-[#0B4D3B] text-white overflow-hidden relative">
-      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#147D64]/60 border border-[#F4B400]/40 text-[#F4B400] text-xs font-bold mb-3 shadow-lg">
             <Sparkles className="w-4 h-4 text-[#F4B400]" />
-            <span>Divine Pilgrimage • சிவ தலம் யாத்திரை</span>
+            <span>Divine Pilgrimage</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             South Indian <br />
             <span className="text-[#FFD166]">Shiva Temple Tours</span>
           </h2>
           <p className="mt-3 text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed">
-            பஞ்ச பூத ஸ்தலங்கள் (நிலம், நீர், நெருப்பு, காற்று, ஆகாயம்) மற்றும் தென்னிந்தியாவின் வரலாற்று சிறப்புமிக்க சிவ தலங்களுக்கான பிரத்யேக ஆன்மீக யாத்திரை பேக்கேஜ்கள்.
+            Dedicated sacred pilgrimage circuits connecting the 5 cosmic element temples (Pancha Bhoota Sthalams: Earth, Water, Fire, Air, Space) and historic Jyotirlinga shrines.
           </p>
         </div>
 
@@ -91,7 +90,7 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
               Pancha Bhoota & Jyotirlinga Special Tempo Travellers
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-slate-200">
-              குடும்பத்துடன் ஆன்மீக யாத்திரை செல்ல வசதியான 12, 17 மற்றும் 20 சீட்டர் புஷ்பேக் ஏசி டெம்போ டிராவலர்கள் அனுபவமிக்க ஓட்டுநர்களுடன் கிடைக்கும்.
+              Spacious 12, 17 and 20 seater pushback AC Tempo Travellers with courteous and devotional drivers experienced in temple darshan schedules.
             </p>
           </div>
           <a
@@ -104,7 +103,6 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
         </div>
 
       </div>
-
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BUSINESS_INFO } from '../data/tourismData';
-import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function ContactUsSection({ onOpenBookingModal }) {
   return (
@@ -11,14 +11,14 @@ export default function ContactUsSection({ onOpenBookingModal }) {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#147D64]/60 border border-[#F4B400]/40 text-[#F4B400] text-xs font-bold mb-3 shadow-lg">
             <Phone className="w-3.5 h-3.5 text-[#F4B400]" />
-            <span>24/7 Travel Assistance • எங்களை தொடர்பு கொள்ள</span>
+            <span>24/7 Travel Assistance • Contact Us</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             Start Planning <br />
             <span className="text-[#FFD166]">Your Journey Today</span>
           </h2>
           <p className="mt-3 text-slate-200 text-xs sm:text-sm md:text-base">
-            எந்த நேரத்திலும் எங்களை தொலைபேசி அல்லது வாட்ஸ்அப் வழியாக தொடர்புகொண்டு உடனடி டூர் கொட்டேஷன் பெறலாம்.
+            Contact us anytime via phone call or WhatsApp for instant customized quotations, itinerary advice, and vehicle reservations.
           </p>
         </div>
 

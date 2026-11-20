@@ -11,14 +11,14 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E6] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
             <Shield className="w-3.5 h-3.5 text-[#147D64]" />
-            <span>Luxury Transportation Fleet • சொகுசு வாகனங்கள்</span>
+            <span>Luxury Transportation Fleet</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight">
             Tempo Traveller & <br />
             <span className="text-[#147D64]">Tourist Vehicle Rentals</span>
           </h2>
           <p className="mt-3 text-[#6B7280] text-sm sm:text-base leading-relaxed font-medium">
-            மோகனூர் (நாமக்கல்) மற்றும் தமிழகம் முழுவதிலும் இருந்து கர்நாடகா, கேரளா, ஆந்திரா செல்ல நவீன ஏசி புஷ்பேக் வசதியுடன் கூடிய டெம்போ டிராவலர்கள் மற்றும் கார்கள்.
+            Modern AC pushback Tempo Travellers, Innova Crystas and luxury tourist buses with inter-state permits across Tamil Nadu, Karnataka, Kerala and Andhra Pradesh.
           </p>
         </div>
 

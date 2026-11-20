@@ -1,5 +1,5 @@
 // South Indian Tourism Data Source
-// Matched to the Official Color Palette & UI Guide
+// Clean, Crisp, 100% English - Matched to the Official Color Palette & UI Guide
 
 export const THEME_COLORS = {
   primary: "#0B4D3B",       // Dark Green (Headers, Navbar, Primary sections)
@@ -17,7 +17,6 @@ export const BUSINESS_INFO = {
   name: "South Indian Tourism",
   tagline: "Explore South India",
   subtitle: "Temples • Hills • Beaches • Culture • Heritage",
-  taglineTa: "தென்னிந்தியாவின் பிரம்மாண்ட அழகு & ஆன்மீக பயணம்",
   subheading: "Explore ancient temples, misty hill stations, serene backwaters and unforgettable journeys across South India.",
   experience: "15+ Years",
   destinationsCount: "30+ Destinations",
@@ -27,18 +26,18 @@ export const BUSINESS_INFO = {
   whatsappNumber: "+91 63809 39670",
   whatsappLink: "https://wa.me/916380939670?text=Hello%20South%20Indian%20Tourism%2C%20I%20am%20interested%20in%20planning%20a%20tour%20package.",
   email: "info@southindiantourism.com",
-  address: "Nehru Nagar, Kuthangalmedu, Namakkal Road, Mohanur (Tk), Namakkal (Dt), Tamil Nadu, India – 637015",
+  address: "Nehru Nagar, Kuthangalmedu, Namakkal Road, Mohanur, Namakkal, Tamil Nadu, India – 637015",
   workingHours: "Monday – Sunday: 6:00 AM – 10:00 PM"
 };
 
-// UI Guide Category Pills (From UI Reference Image)
+// UI Guide Category Pills
 export const UI_CATEGORIES = [
-  { id: "temples", name: "Temples", icon: "temple", count: "12+ Circuits" },
-  { id: "hills", name: "Hill Stations", icon: "mountain", count: "8+ Peaks" },
-  { id: "beaches", name: "Beaches", icon: "palm", count: "10+ Coasts" },
-  { id: "backwaters", name: "Backwaters", icon: "waves", count: "6+ Lagoons" },
-  { id: "wildlife", name: "Wildlife", icon: "paw", count: "5+ Sanctuaries" },
-  { id: "culture", name: "Culture", icon: "sparkles", count: "Heritage" }
+  { id: "Temples", name: "Temples", desc: "Sacred Chola & Pandya Architecture" },
+  { id: "Hill Stations", name: "Hill Stations", desc: "Misty Tea Plantations & Peaks" },
+  { id: "Beaches", name: "Beaches", desc: "Golden Coasts & Coral Horizons" },
+  { id: "Backwaters", name: "Backwaters", desc: "Serene Palm-Fringed Lagoons" },
+  { id: "Wildlife", name: "Wildlife", desc: "Western Ghats Biosphere Reserves" },
+  { id: "Culture", name: "Culture", desc: "Living Traditions & Royal Palaces" }
 ];
 
 // The 4 Consecutive State Drone Voyage Experiences (Tamil Nadu -> Kerala -> Karnataka -> Andhra Pradesh)
@@ -47,150 +46,138 @@ export const STATE_DRONE_VOYAGES = [
     id: "tamil-nadu",
     stateNumber: "01",
     stateName: "Tamil Nadu",
-    stateNameTa: "தமிழ்நாடு",
     primaryLocation: "Ooty & Madurai",
-    primaryLocationTa: "ஊட்டி & மதுரை",
     droneVideo: "https://cdn.coverr.co/videos/coverr-mist-over-green-hills-3957/1080p.mp4",
+    localVideoPath: "/videos/tamilnadu.mp4",
     posterImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1920&q=80",
     droneBadge: "4K DRONE SHOT • 60 FPS • MISTY SHOLA RIDGES",
-    tagline: "Queen of Hills, Heritage Toy Train & Majestic Gopurams",
-    description: "பச்சை பசேல் தேயிலை தோட்டங்கள், பனி படர்ந்த மலைகள் மற்றும் 2,500 ஆண்டுகள் பழமையான மதுரை மீனாட்சி அம்மன் ஆலயத்தின் பிரம்மாண்ட வான்வழி காட்சி.",
+    tagline: "Queen of Hills, Heritage Toy Train & Iconic Gopurams",
+    description: "Witness the emerald tea slopes of Ooty and the 2,500-year-old architectural grandeur of Madurai Meenakshi Amman Temple from the sky.",
     
-    // Explicit Stay Details as requested:
+    // Crisp Stay Details
     stayDetails: {
-      title: "Handpicked Premium Stays in Tamil Nadu",
-      titleTa: "ஊட்டி & மதுரையில் சிறந்த தங்கும் விடுதிகள்",
+      title: "Handpicked Premium Stays",
       options: [
-        { type: "Hill Heritage Bungalow", name: "Colonial Tea Estate Villa, Ooty", perk: "Panoramic mountain valley views & private fireplace" },
-        { type: "Temple View Star Hotel", name: "Heritage Madurai Luxury Stay", perk: "Walkable to Meenakshi Amman Temple with traditional feasts" },
-        { type: "Eco Nature Resort", name: "Nilgiris Forest Cliff Cottage", perk: "Campfire, shola jungle walks & homemade chocolate tasting" }
+        { type: "Colonial Tea Estate Villa", name: "Nilgiris Heritage Bungalow", perk: "Valley views & private fireplace" },
+        { type: "Temple-View Star Hotel", name: "Heritage Madurai Retreat", perk: "Walkable to temple corridors" },
+        { type: "Forest Cliff Resort", name: "Ooty Mountain Shola Lodge", perk: "Campfire & tea garden trails" }
       ]
     },
 
-    // Featured Tour Package:
+    // Featured Tour Package
     featuredPackage: {
       id: "ooty-madurai-5d",
       title: "Tamil Nadu Heritage & Hill Station Tour",
-      titleTa: "5 நாட்கள் ஊட்டி & மதுரை ஸ்பெஷல் டூர்",
       duration: "5 Days / 4 Nights",
       price: "₹18,500",
-      priceUnit: "per person (approx)",
-      route: "Chennai / Coimbatore → Ooty → Coonoor → Madurai → Rameshwaram",
-      inclusions: ["Dedicated AC Tempo Traveller / Innova", "Hill Resort & Star Hotel Stay", "Daily Breakfast & Tolls Included", "Special Darshan Assistance"]
+      priceUnit: "per person",
+      route: "Coimbatore → Ooty → Coonoor → Madurai",
+      inclusions: ["Dedicated AC Tempo Traveller / Innova", "Hill Resort & Star Hotel Stays", "Daily Breakfast & Tolls Included", "Temple Darshan Guidance"]
     },
 
-    highlights: ["Ooty UNESCO Toy Train Ride", "Doddabetta Peak 2,637m", "Madurai Meenakshi 14 Towers", "Botanical & Rose Gardens"]
+    highlights: ["Ooty UNESCO Mountain Railway", "Doddabetta Peak 2,637m", "Meenakshi Amman 14 Gopurams", "Botanical & Rose Gardens"]
   },
 
   {
     id: "kerala",
     stateNumber: "02",
     stateName: "Kerala",
-    stateNameTa: "கேரளா",
     primaryLocation: "Munnar & Alleppey",
-    primaryLocationTa: "மூணார் & ஆலப்புழா",
     droneVideo: "https://cdn.coverr.co/videos/coverr-river-running-through-a-lush-forest-1478/1080p.mp4",
+    localVideoPath: "/videos/kerala.mp4",
     posterImage: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80",
     droneBadge: "4K DRONE SHOT • 60 FPS • EMERALD WATERWAYS",
-    tagline: "God's Own Country, Emerald Backwaters & Spice Clouds",
-    description: "தென்னை மரங்கள் சூழ்ந்த ஆலப்புழா உப்பங்கழியில் சொகுசு படகு இல்லப் பயணம் மற்றும் மூணாரின் மேகங்கள் தவழும் தேயிலை மலைகள்.",
+    tagline: "God's Own Country, Backwaters & Cloud Canopy",
+    description: "Glide over palm-fringed lagoons in a luxury houseboat and soar above the mist-covered tea carpet valleys of Munnar.",
 
     stayDetails: {
-      title: "Luxury Stays & Houseboats in Kerala",
-      titleTa: "கேரளாவில் படகு வீடு & சொகுசு தங்கும் வசதிகள்",
+      title: "Luxury Stays & Houseboats",
       options: [
-        { type: "Private AC Houseboat", name: "Alleppey Deluxe Kettuvallam", perk: "Full day cruise, overnight stay & authentic Kerala 3 meals" },
-        { type: "Treehouse Resort", name: "Munnar Cloud Canopy Treehouse", perk: "Suspended 40ft in spice plantations with mist views" },
-        { type: "Ayurvedic Spa Retreat", name: "Thekkady Spice Forest Villa", perk: "Herbal rejuvenation massages & spice garden trail" }
+        { type: "Private AC Houseboat", name: "Alleppey Deluxe Kettuvallam", perk: "Overnight cruise with Kerala meals" },
+        { type: "Treehouse Eco-Resort", name: "Munnar Cloud Canopy Villa", perk: "Suspended 40ft above tea gardens" },
+        { type: "Spice Forest Retreat", name: "Thekkady Wellness Resort", perk: "Ayurvedic spa & spice trail" }
       ]
     },
 
     featuredPackage: {
       id: "kerala-5d",
       title: "Kerala Backwaters & Misty Hills Tour",
-      titleTa: "5 நாட்கள் கேரளா ஹனிமூன் & குடும்ப சுற்றுலா",
       duration: "5 Days / 4 Nights",
       price: "₹21,500",
-      priceUnit: "per person (approx)",
-      route: "Kochi → Cheeyappara Falls → Munnar → Thekkady → Alleppey Houseboat",
-      inclusions: ["All-Inclusive Luxury Houseboat", "Munnar Tea Resort Stay", "AC Chauffeur-Driven Transport", "Kathakali & Martial Arts Show"]
+      priceUnit: "per person",
+      route: "Kochi → Cheeyappara Falls → Munnar → Alleppey",
+      inclusions: ["All-Inclusive Private Houseboat", "Munnar Hill Resort Stay", "AC Chauffeur-Driven Transport", "Tea Museum & Cultural Show"]
     },
 
-    highlights: ["Overnight Alleppey Houseboat Cruise", "Munnar Tea Museum & Mattupetty", "Eravikulam National Park (Nilgiri Tahr)", "Periyar Wildlife Sanctuary"]
+    highlights: ["Overnight Houseboat Stay", "Munnar Tea Museum & Mattupetty", "Eravikulam National Park", "Spice Plantations"]
   },
 
   {
     id: "karnataka",
     stateNumber: "03",
     stateName: "Karnataka",
-    stateNameTa: "கர்நாடகா",
     primaryLocation: "Coorg & Hampi",
-    primaryLocationTa: "கூர்க் & ஹம்பி",
     droneVideo: "https://cdn.coverr.co/videos/coverr-flying-over-a-green-forest-1473/1080p.mp4",
+    localVideoPath: "/videos/karnataka.mp4",
     posterImage: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1920&q=80",
     droneBadge: "4K DRONE SHOT • 60 FPS • RAINFOREST CANOPY",
     tagline: "Scotland of India, Coffee Cloudlands & Stone Empires",
-    description: "மேற்கு தொடர்ச்சி மலையின் காஃபி நறுமணம் கமழும் கூர்க் பள்ளத்தாக்கு மற்றும் விஜயநகர பேரரசின் வரலாற்று சிறப்புமிக்க ஹம்பி கல் தேர்.",
+    description: "Traverse misty coffee estates and roaring waterfalls in Coorg, paired with the surreal UNESCO boulder monuments of the Vijayanagara Empire in Hampi.",
 
     stayDetails: {
-      title: "Estate Stays & Royal Heritage in Karnataka",
-      titleTa: "கூர்க் & ஹம்பியில் பாரம்பரிய தங்கும் இடங்கள்",
+      title: "Estate Stays & Heritage Resorts",
       options: [
-        { type: "Plantation Homestay", name: "Coorg Coffee Mist Estate Villa", perk: "Private stream, coffee plucking tour & Kodava cuisine" },
-        { type: "Stone Heritage Resort", name: "Hampi Boulders & Tungabhadra Stay", perk: "Surrounded by ancient monolithic rocks & riverbanks" },
-        { type: "Royal Palace View Stay", name: "Grand Mysuru Heritage Hotel", perk: "Overlooking illuminated Mysore Palace & Chamundi hills" }
+        { type: "Plantation Homestay", name: "Coorg Coffee Mist Estate Villa", perk: "Private stream & plantation walk" },
+        { type: "Stone Heritage Resort", name: "Hampi Boulders River Stay", perk: "Surrounded by ancient monoliths" },
+        { type: "Palace-View Hotel", name: "Grand Mysuru Heritage Stay", perk: "Overlooking illuminated palace" }
       ]
     },
 
     featuredPackage: {
       id: "karnataka-5d",
       title: "Karnataka Royal & Hill Station Tour",
-      titleTa: "5 நாட்கள் கூர்க், மைசூர் & ஹம்பி சுற்றுலா",
       duration: "5 Days / 4 Nights",
       price: "₹19,999",
-      priceUnit: "per person (approx)",
-      route: "Bengaluru → Mysuru Palace → Srirangapatna → Coorg → Bengaluru",
-      inclusions: ["Pushback AC Tempo Traveller / Crysta", "Coorg Resort & Coffee Estate Homestay", "Breakfast & Welcome Drink", "Inter-State Permits & Tolls"]
+      priceUnit: "per person",
+      route: "Bengaluru → Mysuru Palace → Srirangapatna → Coorg",
+      inclusions: ["Luxury AC Tempo / Innova", "Coorg Resort & Plantation Homestay", "Daily Breakfast Included", "Inter-State Permits & Tolls"]
     },
 
-    highlights: ["Abbey & Iruppu Waterfalls", "Iconic UNESCO Hampi Stone Chariot", "Illuminated Mysore Palace (100,000 bulbs)", "Dubare Elephant Camp River Rafting"]
+    highlights: ["Abbey & Iruppu Waterfalls", "Iconic UNESCO Stone Chariot", "Mysore Palace 100,000 Lights", "Dubare Elephant Camp"]
   },
 
   {
     id: "andhra-pradesh",
     stateNumber: "04",
     stateName: "Andhra Pradesh",
-    stateNameTa: "ஆந்திர பிரதேசம்",
     primaryLocation: "Tirupati & Araku Valley",
-    primaryLocationTa: "திருப்பதி & அரக்கு பள்ளத்தாக்கு",
     droneVideo: "https://cdn.coverr.co/videos/coverr-waves-hitting-a-rocky-shore-5544/1080p.mp4",
+    localVideoPath: "/videos/andhra.mp4",
     posterImage: "https://images.unsplash.com/photo-1580294658515-63db974611e4?auto=format&fit=crop&w=1920&q=80",
     droneBadge: "4K DRONE SHOT • 60 FPS • SACRED SEVEN HILLS",
     tagline: "Seven Sacred Hills, Cosmic Temples & Coastal Heights",
-    description: "ஏழுமலையான் அருள் பாலிக்கும் புனித திருப்பதி சேத்திரம் மற்றும் இயற்கை எழில் கொஞ்சும் அரக்கு பள்ளத்தாக்கின் வான்வழி காட்சி.",
+    description: "Aerial vistas of the sacred Tirumala hill range where Lord Venkateswara resides, along with scenic Eastern Ghats valleys.",
 
     stayDetails: {
-      title: "Sacred Stays & Hill Cottages in Andhra",
-      titleTa: "திருப்பதி & அரக்குவில் சிறந்த தங்குமிடங்கள்",
+      title: "Sacred Stays & Hill Cottages",
       options: [
-        { type: "Star Pilgrimage Stay", name: "Tirupati Grand Balaji Residency", perk: "Near Alipiri gate with special darshan queue assistance" },
-        { type: "Hill View Bamboo Cottage", name: "Araku Valley Tribal Eco Lodge", perk: "Misty coffee plantation view & Dhimsa tribal dance" },
-        { type: "Coastal Beach Resort", name: "Visakhapatnam Bay View Resort", perk: "Oceanfront rooms facing Rishikonda golden sands" }
+        { type: "Star Pilgrimage Stay", name: "Tirupati Grand Balaji Residency", perk: "VIP darshan queue support" },
+        { type: "Hill View Bamboo Cottage", name: "Araku Valley Tribal Eco Lodge", perk: "Misty mountain panoramas" },
+        { type: "Coastal Beach Resort", name: "Visakhapatnam Bay View Resort", perk: "Oceanfront facing golden sands" }
       ]
     },
 
     featuredPackage: {
       id: "andhra-4d",
       title: "Sacred Balaji & Coastal Andhra Tour",
-      titleTa: "4 நாட்கள் திருப்பதி & காளஹஸ்தி யாத்திரை",
       duration: "4 Days / 3 Nights",
       price: "₹16,800",
-      priceUnit: "per person (approx)",
-      route: "Chennai / Bengaluru → Tirupati Balaji → Srikalahasti (Vayu Lingam) → Kanipakam",
+      priceUnit: "per person",
+      route: "Chennai / Bengaluru → Tirupati Balaji → Srikalahasti",
       inclusions: ["Dedicated AC Tempo Traveller", "Star Hotel Accommodations", "VIP Special Entry Darshan Support", "All Parking, Driver Bata & Tolls"]
     },
 
-    highlights: ["Sri Venkateswara Swamy Temple Darshan", "Srikalahasti Rahu Kethu Parihara Temple", "Padmavathi Ammavari Temple", "Kapila Theertham Waterfalls"]
+    highlights: ["Sri Venkateswara Swamy Darshan", "Srikalahasti Rahu Kethu Temple", "Padmavathi Ammavari Shrine", "Kapila Theertham Waterfalls"]
   }
 ];
 
@@ -199,7 +186,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "madurai",
     name: "Madurai",
-    nameTa: "மதுரை",
     state: "Tamil Nadu",
     image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
     description: "The temple city of Meenakshi Amman with 2,500 years of living history.",
@@ -208,7 +194,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "munnar",
     name: "Munnar",
-    nameTa: "மூணார்",
     state: "Kerala",
     image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
     description: "Endless rolling tea plantations, cool mountain breeze and mist-clad peaks.",
@@ -217,7 +202,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "hampi",
     name: "Hampi",
-    nameTa: "ஹம்பி",
     state: "Karnataka",
     image: "https://images.unsplash.com/photo-1600100397608-f010f443b772?auto=format&fit=crop&w=800&q=80",
     description: "Surreal boulder landscapes and majestic UNESCO Vijayanagara stone monuments.",
@@ -226,7 +210,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "pondicherry",
     name: "Pondicherry",
-    nameTa: "பாண்டிச்சேரி",
     state: "Tamil Nadu",
     image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
     description: "French colonial quarters, yellow seaside villas and tranquil beaches.",
@@ -235,7 +218,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "ooty",
     name: "Ooty",
-    nameTa: "ஊட்டி",
     state: "Tamil Nadu",
     image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
     description: "Queen of Hill Stations with UNESCO Nilgiri toy train and rose gardens.",
@@ -244,7 +226,6 @@ export const UI_POPULAR_DESTINATIONS = [
   {
     id: "coorg",
     name: "Coorg",
-    nameTa: "கூர்க்",
     state: "Karnataka",
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
     description: "Scotland of India with lush coffee estates, Abbey Falls and misty ridges.",
@@ -252,22 +233,20 @@ export const UI_POPULAR_DESTINATIONS = [
   }
 ];
 
-// Featured Packages with exact UI Guide Color Accents
+// Featured Packages
 export const TOUR_PACKAGES = [
   {
     id: "tamil-nadu-5d",
     title: "Tamil Nadu Heritage & Temple Tour",
-    titleTa: "தமிழ்நாடு பாரம்பரிய & கோவில் யாத்திரை",
     duration: "5 Days / 4 Nights",
     state: "Tamil Nadu",
     category: "Family / Temple / Pilgrimage",
     route: "Chennai → Mahabalipuram → Kanchipuram → Thanjavur → Madurai",
     price: "₹18,500",
-    priceUnit: "per person (approx)",
+    priceUnit: "per person",
     image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
     badge: "Most Popular",
     rating: 4.9,
-    reviews: 142,
     description: "A cultural odyssey witnessing Shore Temples, Silk City Kanchi, the towering Thanjavur Big Temple, and the vibrant night ceremony of Madurai Meenakshi.",
     inclusions: ["Dedicated AC Tempo/Car", "All Tolls, Parking, Driver Bata", "Standard/Deluxe Hotel Stays", "Breakfast included", "Temple Darshan Guidance"],
     itinerary: [
@@ -281,17 +260,15 @@ export const TOUR_PACKAGES = [
   {
     id: "karnataka-5d",
     title: "Karnataka Royal & Hill Station Tour",
-    titleTa: "கர்நாடகா அரண்மனை & மலைவாசஸ்தலம் பயணம்",
     duration: "5 Days / 4 Nights",
     state: "Karnataka",
     category: "Family / Holiday / Group",
     route: "Bengaluru → Mysuru → Srirangapatna → Coorg → Bengaluru",
     price: "₹19,999",
-    priceUnit: "per person (approx)",
+    priceUnit: "per person",
     image: "https://images.unsplash.com/photo-1580294658515-63db974611e4?auto=format&fit=crop&w=800&q=80",
     badge: "Top Scenic",
     rating: 4.9,
-    reviews: 118,
     description: "From the grand palaces of Mysuru and Tipu Sultan's Srirangapatna to the misty coffee estates and roaring waterfalls of Coorg.",
     inclusions: ["Chauffeur Driven AC Vehicle", "Fuel, Toll, Inter-State Permits", "Coorg Resort / Hotel Stay", "Breakfast & Welcome Drink", "Sightseeing Entry Support"],
     itinerary: [
@@ -305,17 +282,15 @@ export const TOUR_PACKAGES = [
   {
     id: "kerala-5d",
     title: "Kerala Backwaters & Misty Hills Tour",
-    titleTa: "கேரளா உப்பங்கழி & மூணார் பேக்கேஜ்",
     duration: "5 Days / 4 Nights",
     state: "Kerala",
     category: "Family / Honeymoon / Group",
     route: "Kochi → Munnar → Thekkady → Alleppey → Kochi",
     price: "₹21,500",
-    priceUnit: "per person (approx)",
+    priceUnit: "per person",
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
     badge: "Relaxation",
     rating: 5.0,
-    reviews: 204,
     description: "Crisp mountain air in Munnar tea plantations followed by spice gardens in Thekkady and a blissful private houseboat cruise in Alleppey.",
     inclusions: ["Full Time AC Transport", "Alleppey Houseboat with all 3 meals", "Munnar Hill Resort Stay", "Driver Allowance & Taxes", "Kathakali / Martial Arts Show"],
     itinerary: [
@@ -329,18 +304,16 @@ export const TOUR_PACKAGES = [
   {
     id: "shiva-temple-6d",
     title: "Grand Pancha Bhoota & Shiva Temples Yatra",
-    titleTa: "பஞ்ச பூத ஸ்தலங்கள் & சிவன் கோவில் யாத்திரை",
     duration: "6 Days / 5 Nights",
     state: "Tamil Nadu & AP",
     category: "Dedicated Shiva Pilgrimage",
     route: "Chennai → Kanchi (Earth) → Kalahasti (Air) → Thiruvannamalai (Fire) → Chidambaram (Space) → Trichy (Water) → Rameshwaram",
     price: "₹24,500",
-    priceUnit: "per person (approx)",
+    priceUnit: "per person",
     image: "https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?auto=format&fit=crop&w=800&q=80",
     badge: "Divine Yatra",
     rating: 5.0,
-    reviews: 96,
-    description: "The ultimate sacred pilgrimage connecting all 5 cosmic elements (Pancha Bhoota) manifested as Lord Shiva, culminating at the holy island of Rameshwaram.",
+    description: "The ultimate sacred pilgrimage connecting all 5 cosmic elements manifested as Lord Shiva, culminating at the holy island of Rameshwaram.",
     inclusions: ["Luxury AC Pushback Tempo Traveller", "Experienced Devotional Route Driver", "Clean AC Hotel Stays near Temples", "VIP Special Darshan Assistance", "Holy Theertham Bath Support"],
     itinerary: [
       { day: "Day 1", plan: "Chennai to Kanchipuram (Prithvi Lingam - Earth) & Srikalahasti (Vayu Lingam - Air)." },
@@ -399,7 +372,7 @@ export const SHIVA_TEMPLES = [
   }
 ];
 
-// Vehicle Fleet for Mohanur / South India Tours
+// Vehicle Fleet for Tours
 export const VEHICLE_FLEET = [
   {
     name: "Force Tempo Traveller",
@@ -442,7 +415,7 @@ export const TESTIMONIALS = [
     vehicle: "12-Seater AC Tempo Traveller",
     duration: "4 Days",
     rating: 5,
-    text: "South Indian Tourism Mohanur organized our family temple trip flawlessly. The driver was very patient with my elderly parents and knew every temple timing."
+    text: "South Indian Tourism Mohanur organized our family temple trip flawlessly. The driver was very patient with elderly parents and knew every temple timing."
   },
   {
     id: 2,
@@ -465,17 +438,6 @@ export const TESTIMONIALS = [
     duration: "5 Days",
     rating: 5,
     text: "Our group of 14 cousins booked the 5-day Kerala tour. The houseboat experience was unforgettable and the vehicle was exceptionally neat with pushback seats."
-  },
-  {
-    id: 4,
-    name: "Anandharaman V.",
-    location: "Coimbatore, Tamil Nadu",
-    destination: "Pancha Bhoota Shiva Yatra",
-    state: "Tamil Nadu",
-    vehicle: "Tempo Traveller Luxury",
-    duration: "6 Days",
-    rating: 5,
-    text: "Covering Tiruvannamalai, Chidambaram, and Kalahasti smoothly was made possible by their experienced driver. Transparent billing with zero hidden costs!"
   }
 ];
 
@@ -483,7 +445,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     q: "How can I book a South India tour?",
-    a: "You can book directly by calling our 24/7 reservation desks at +91 94433 39921 / +91 73734 35535, or clicking the WhatsApp Enquiry button. You can also fill out the 'Plan Your Trip' form on this website to receive a free customized quotation within minutes."
+    a: "You can book directly by calling our reservation desks at +91 94433 39921 / +91 73734 35535, or clicking the WhatsApp Enquiry button. You can also fill out the 'Plan Your Trip' form on this website to receive a free customized quotation within minutes."
   },
   {
     q: "Can you customize my itinerary?",
@@ -495,7 +457,7 @@ export const FAQS = [
   },
   {
     q: "Can I book a family or group tour?",
-    a: "Yes! Family vacations, pilgrimage yatras, college friends trips, and corporate outings are our core expertise. Our spacious Tempo Travellers and buses are ideal for groups of 6 to 35+ passengers with large luggage capacity."
+    a: "Yes! Family vacations, pilgrimage yatras, friends trips, and corporate outings are our core expertise. Our spacious Tempo Travellers and buses are ideal for groups of 6 to 35+ passengers with large luggage capacity."
   },
   {
     q: "Can I plan a multi-state South India trip?",

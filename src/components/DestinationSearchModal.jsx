@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ALL_DESTINATION_TAGS } from '../data/tourismData';
-import { Search, MapPin, X, ArrowRight, Compass, Sparkles } from 'lucide-react';
+import { Search, MapPin, X, ArrowRight, Compass } from 'lucide-react';
 
 export default function DestinationSearchModal({ isOpen, onClose, onSelectDestination }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -8,7 +8,7 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
 
   if (!isOpen) return null;
 
-  const states = ['All', 'Tamil Nadu', 'Karnataka', 'Kerala', 'Andhra Pradesh', 'Puducherry'];
+  const states = ['All', 'Tamil Nadu', 'Karnataka', 'Kerala', 'Andhra Pradesh'];
 
   const filtered = ALL_DESTINATION_TAGS.filter(dest => {
     const matchesQuery = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -20,27 +20,25 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/85 backdrop-blur-md"
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
-      {/* Modal Dialog */}
-      <div className="relative bg-emerald-950 border border-emerald-500/40 rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col z-10 shadow-2xl">
+      <div className="relative bg-white border border-[#147D64]/30 rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col z-10 shadow-2xl text-[#1F2937]">
         
         {/* Header */}
-        <div className="p-6 border-b border-emerald-800/60 flex items-center justify-between">
+        <div className="p-6 border-b border-[#147D64]/15 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Compass className="w-5 h-5 text-emerald-400 animate-spin-slow" />
+            <Compass className="w-5 h-5 text-[#147D64]" />
             <div>
-              <h3 className="font-cinzel text-xl font-bold text-white">Where Do You Want to Go?</h3>
-              <p className="text-xs text-emerald-300">தென்னிந்தியாவின் 30+ சுற்றுலா தலங்களைத் தேடுங்கள்</p>
+              <h3 className="font-heading text-xl font-bold text-[#0B4D3B]">Where Do You Want to Go?</h3>
+              <p className="text-xs text-[#6B7280]">Search 30+ destinations across South India</p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-white bg-slate-900 border border-emerald-500/20"
+            className="p-2 rounded-full text-slate-400 hover:text-[#0B4D3B] bg-[#F0F7F4] border border-[#147D64]/20"
           >
             <X className="w-5 h-5" />
           </button>
@@ -49,19 +47,19 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
         {/* Search Input Bar */}
         <div className="p-6 pb-3 space-y-3">
           <div className="relative">
-            <Search className="w-5 h-5 text-emerald-400 absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-5 h-5 text-[#147D64] absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by destination (e.g. Hampi, Ooty, Madurai, Coorg, Munnar)..."
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-900/90 border border-emerald-500/30 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+              placeholder="Search by destination (e.g. Ooty, Madurai, Munnar, Coorg, Hampi)..."
+              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[#F0F7F4] border border-[#147D64]/20 text-[#1F2937] placeholder-slate-400 text-sm focus:outline-none focus:border-[#147D64] focus:bg-white"
               autoFocus
             />
             {searchTerm && (
               <button 
                 onClick={() => setSearchTerm('')} 
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-black"
               >
                 Clear
               </button>
@@ -76,8 +74,8 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
                 onClick={() => setSelectedState(st)}
                 className={`px-3 py-1 rounded-full whitespace-nowrap transition-colors ${
                   selectedState === st 
-                    ? 'bg-emerald-500 text-white font-semibold' 
-                    : 'bg-emerald-900/40 text-emerald-300 hover:bg-emerald-800'
+                    ? 'bg-[#147D64] text-white font-bold' 
+                    : 'bg-[#F0F7F4] text-[#1F2937] hover:bg-[#FFF8E6]'
                 }`}
               >
                 {st}
@@ -90,9 +88,9 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
         <div className="flex-1 overflow-y-auto p-6 pt-2 space-y-2">
           {filtered.length === 0 ? (
             <div className="text-center py-10 text-slate-400">
-              <MapPin className="w-8 h-8 mx-auto text-emerald-500/40 mb-2" />
+              <MapPin className="w-8 h-8 mx-auto text-[#147D64]/40 mb-2" />
               <p className="text-sm">No destinations found matching "{searchTerm}".</p>
-              <p className="text-xs text-slate-500 mt-1">Try searching for Coorg, Hampi, Madurai, or Ooty.</p>
+              <p className="text-xs text-slate-400 mt-1">Try searching for Ooty, Madurai, Coorg, Munnar, or Hampi.</p>
             </div>
           ) : (
             filtered.map((item, idx) => (
@@ -102,22 +100,22 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
                   onSelectDestination(item);
                   onClose();
                 }}
-                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-emerald-900/20 hover:bg-emerald-900/60 border border-emerald-500/10 hover:border-emerald-400/40 text-left transition-all group"
+                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-[#F0F7F4] hover:bg-[#FFF8E6] border border-[#147D64]/10 hover:border-[#F4B400] text-left transition-all group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center text-[#147D64] group-hover:scale-105 transition-transform shadow-sm">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white group-hover:text-emerald-300">
+                    <h4 className="text-sm font-bold text-[#1F2937] group-hover:text-[#0B4D3B]">
                       {item.name}
                     </h4>
-                    <p className="text-xs text-slate-400">
-                      {item.category} • <span className="text-emerald-400 font-medium">{item.state}</span>
+                    <p className="text-xs text-[#6B7280]">
+                      {item.category} • <span className="text-[#147D64] font-semibold">{item.state}</span>
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#147D64]">
                   <span>Plan Trip</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -126,8 +124,7 @@ export default function DestinationSearchModal({ isOpen, onClose, onSelectDestin
           )}
         </div>
 
-        {/* Footer */}
-        <div className="p-4 bg-emerald-950/90 border-t border-emerald-800/60 text-center text-xs text-slate-400">
+        <div className="p-4 bg-[#F0F7F4] border-t border-[#147D64]/15 text-center text-xs text-[#6B7280]">
           Showing {filtered.length} of {ALL_DESTINATION_TAGS.length} South Indian Tourism locations
         </div>
 

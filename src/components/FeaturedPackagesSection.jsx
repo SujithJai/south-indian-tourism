@@ -34,20 +34,20 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E6] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#F4B400]" />
-            <span>Curated Travel Experiences • சிறந்த டூர் பேக்கேஜ்கள்</span>
+            <span>Curated Travel Experiences</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight">
             Popular South India <br />
             <span className="text-[#147D64]">Tour Packages</span>
           </h2>
           <p className="mt-3 text-[#6B7280] text-sm sm:text-base font-medium">
-            Day-by-day travel plans for 5, 6 and 7 days across Tamil Nadu, Karnataka, Kerala & Shiva Pilgrimages with comfortable transportation and verified drivers.
+            Day-by-day travel plans across Tamil Nadu, Karnataka, Kerala & Shiva Pilgrimages with comfortable transportation and verified drivers.
           </p>
 
           {/* Filter Pills */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {[
-              { id: 'All', label: 'All Packages (அனைத்தும்)' },
+              { id: 'All', label: 'All Packages' },
               { id: 'Tamil Nadu', label: 'Tamil Nadu' },
               { id: 'Karnataka', label: 'Karnataka' },
               { id: 'Kerala', label: 'Kerala' },
@@ -114,9 +114,6 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
                   <h3 className="font-heading text-xl font-bold text-[#1F2937] group-hover:text-[#0B4D3B] transition-colors leading-snug">
                     {pkg.title}
                   </h3>
-                  <p className="text-xs text-[#6B7280] font-medium mt-0.5">
-                    {pkg.titleTa}
-                  </p>
 
                   {/* Route */}
                   <div className="mt-3.5 p-3 rounded-xl bg-[#F0F7F4] border border-[#147D64]/15 flex items-start gap-2 text-xs text-[#1F2937]">
@@ -146,7 +143,6 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
               {/* Action Buttons */}
               <div className="p-6 pt-0 border-t border-[#147D64]/10 mt-4 space-y-2.5">
                 <div className="grid grid-cols-2 gap-2">
-                  {/* Call & Book (Accent Button bg: #F4B400, text: #1F2937) */}
                   <a
                     href={`tel:${BUSINESS_INFO.primaryPhone}`}
                     className="py-2.5 px-3 rounded-xl bg-[#F4B400] hover:bg-[#e0a600] text-[#1F2937] text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
@@ -155,7 +151,6 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
                     <span>Call & Book</span>
                   </a>
 
-                  {/* WhatsApp (Primary Button bg: #147D64, text: #FFFFFF) */}
                   <a
                     href={`https://wa.me/916380939670?text=Hi%2C%20I%20am%20interested%20in%20the%20${encodeURIComponent(pkg.title)}%20(${encodeURIComponent(pkg.duration)}).%20Please%20send%20me%20details.`}
                     target="_blank"
@@ -167,7 +162,6 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
                   </a>
                 </div>
 
-                {/* View Itinerary Detail */}
                 <button
                   onClick={() => setSelectedPackage(pkg)}
                   className="w-full py-2.5 rounded-xl bg-[#F0F7F4] hover:bg-[#FFF8E6] text-xs font-bold text-[#0B4D3B] border border-[#147D64]/20 flex items-center justify-center gap-1.5 transition-colors"
@@ -183,7 +177,7 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
 
       </div>
 
-      {/* Day-by-Day Itinerary Modal */}
+      {/* Day-by-Day Modal */}
       {selectedPackage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div 

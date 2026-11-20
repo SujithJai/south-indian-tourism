@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Building2, 
   Mountain, 
   Palmtree, 
   Waves, 
@@ -12,7 +11,7 @@ export default function CategoryStrip({ onSelectCategory }) {
     {
       id: "Temples",
       name: "Temples",
-      nameTa: "புராதன கோவில்கள்",
+      desc: "Sacred Heritage & Gopurams",
       icon: (
         <svg className="w-6 h-6 text-[#147D64]" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
@@ -22,25 +21,25 @@ export default function CategoryStrip({ onSelectCategory }) {
     {
       id: "Hill Stations",
       name: "Hill Stations",
-      nameTa: "மலைவாசஸ்தலங்கள்",
+      desc: "Misty Tea Plantations & Peaks",
       icon: <Mountain className="w-6 h-6 text-[#147D64]" />
     },
     {
       id: "Beaches",
       name: "Beaches",
-      nameTa: "கடற்கரைகள்",
+      desc: "Golden Coasts & Coral Waters",
       icon: <Palmtree className="w-6 h-6 text-[#147D64]" />
     },
     {
       id: "Backwaters",
       name: "Backwaters",
-      nameTa: "உப்பங்கழிகள்",
+      desc: "Serene Palm-Fringed Lagoons",
       icon: <Waves className="w-6 h-6 text-[#147D64]" />
     },
     {
       id: "Wildlife",
       name: "Wildlife",
-      nameTa: "காடுகளும் சரணாலயங்களும்",
+      desc: "Forests & Biosphere Reserves",
       icon: (
         <svg className="w-6 h-6 text-[#147D64]" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2a3 3 0 0 0-3 3c0 .8.3 1.5.8 2.1l-.8.9c-.6.7-1 1.6-1 2.6v.4H6v2h2v4H6v2h2.2c.4 1.7 1.9 3 3.8 3s3.4-1.3 3.8-3H18v-2h-2v-4h2v-2h-2v-.4c0-1-.4-1.9-1-2.6l-.8-.9c.5-.6.8-1.3.8-2.1a3 3 0 0 0-3-3z"/>
@@ -50,7 +49,7 @@ export default function CategoryStrip({ onSelectCategory }) {
     {
       id: "Culture",
       name: "Culture",
-      nameTa: "கலாச்சாரம் & பாரம்பரியம்",
+      desc: "Palaces & Ancient Traditions",
       icon: <Sparkles className="w-6 h-6 text-[#147D64]" />
     }
   ];
@@ -71,7 +70,7 @@ export default function CategoryStrip({ onSelectCategory }) {
               {cat.name}
             </span>
             <span className="text-[10px] text-[#6B7280] mt-0.5 font-medium line-clamp-1">
-              {cat.nameTa}
+              {cat.desc}
             </span>
           </button>
         ))}

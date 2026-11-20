@@ -90,14 +90,14 @@ export default function PlanYourTripSection({ initialData = null }) {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
             <Calendar className="w-3.5 h-3.5 text-[#147D64]" />
-            <span>Customized Travel Planning • உங்கள் விருப்பப்படி சுற்றுலா</span>
+            <span>Customized Travel Planning</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight">
             Plan Your Perfect <br />
             <span className="text-[#147D64]">South India Trip</span>
           </h2>
           <p className="mt-3 text-[#6B7280] text-sm sm:text-base font-medium">
-            உங்கள் பயண விவரங்களைப் பதிவு செய்யுங்கள்; சிறந்த விலையில் முழு பயணத் திட்டத்தை (Free Tour Quote) 10 நிமிடங்களில் பெறலாம்!
+            Submit your travel requirements to receive a comprehensive, tailored quotation and day-by-day plan within minutes.
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export default function PlanYourTripSection({ initialData = null }) {
                 Thank You, {formData.fullName}!
               </h3>
               <p className="text-sm text-[#6B7280] max-w-md mx-auto">
-                உங்கள் பயணத் தகவல் வெற்றிகரமாக பெறப்பட்டது. வாட்ஸ்அப் வழியாக எங்கள் டூர் எக்ஸ்பர்ட் உங்களுடன் இணைவார்.
+                Your travel enquiry has been submitted. Our trip planner will connect with you via WhatsApp with your customized quotation.
               </p>
               
               <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
@@ -343,7 +343,7 @@ export default function PlanYourTripSection({ initialData = null }) {
                 ></textarea>
               </div>
 
-              {/* Submit CTA matching Accent Button bg: #F4B400, text: #1F2937 */}
+              {/* Submit CTA */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-[#6B7280] flex items-center gap-2 font-medium">
                   <span className="w-2 h-2 rounded-full bg-[#147D64]"></span>
