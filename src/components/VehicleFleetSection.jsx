@@ -1,30 +1,23 @@
 import React from 'react';
 import { VEHICLE_FLEET, BUSINESS_INFO } from '../data/tourismData';
-import { Users, Shield, CheckCircle, Phone, MessageCircle, Sparkles } from 'lucide-react';
-import GreenWaveDivider from './GreenWaveDivider';
+import { Users, Shield, CheckCircle, Phone, MessageCircle } from 'lucide-react';
 
 export default function VehicleFleetSection({ onOpenBookingModal }) {
   return (
-    <section id="fleet" className="relative bg-emerald-950 py-20 text-white overflow-hidden">
-      
-      {/* Wave connector */}
-      <GreenWaveDivider flipped={true} color="fill-emerald-950" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fleet" className="py-20 bg-[#F0F7F4] text-[#1F2937]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-400/30 text-emerald-300 text-xs font-semibold mb-3">
-            <Shield className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E6] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
+            <Shield className="w-3.5 h-3.5 text-[#147D64]" />
             <span>Luxury Transportation Fleet • சொகுசு வாகனங்கள்</span>
           </div>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight">
             Tempo Traveller & <br />
-            <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 bg-clip-text text-transparent">
-              Tourist Vehicle Rentals
-            </span>
+            <span className="text-[#147D64]">Tourist Vehicle Rentals</span>
           </h2>
-          <p className="mt-3 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
+          <p className="mt-3 text-[#6B7280] text-sm sm:text-base leading-relaxed font-medium">
             மோகனூர் (நாமக்கல்) மற்றும் தமிழகம் முழுவதிலும் இருந்து கர்நாடகா, கேரளா, ஆந்திரா செல்ல நவீன ஏசி புஷ்பேக் வசதியுடன் கூடிய டெம்போ டிராவலர்கள் மற்றும் கார்கள்.
           </p>
         </div>
@@ -34,7 +27,7 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
           {VEHICLE_FLEET.map((car, idx) => (
             <div 
               key={idx}
-              className="group glass-card rounded-3xl overflow-hidden border border-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+              className="group bg-white rounded-3xl overflow-hidden border border-[#147D64]/15 hover:border-[#F4B400] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between shadow-md hover:shadow-2xl"
             >
               <div>
                 <div className="relative h-48 w-full overflow-hidden">
@@ -43,27 +36,27 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
                     alt={car.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   
                   {/* Capacity Pill */}
-                  <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs font-semibold flex items-center gap-1.5">
-                    <Users className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md text-white text-xs font-semibold flex items-center gap-1.5">
+                    <Users className="w-3.5 h-3.5 text-[#F4B400]" />
                     {car.capacity}
                   </span>
                 </div>
 
                 <div className="p-5">
-                  <h3 className="font-cinzel text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  <h3 className="font-heading text-lg font-bold text-[#0B4D3B] group-hover:text-[#147D64] transition-colors">
                     {car.name}
                   </h3>
-                  <p className="text-xs text-amber-300 font-medium mt-0.5">
+                  <p className="text-xs text-[#F4B400] font-bold mt-0.5">
                     {car.idealFor}
                   </p>
 
                   <div className="mt-4 space-y-2">
                     {car.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-300">
-                        <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <div key={fIdx} className="flex items-center gap-2 text-xs text-[#1F2937]">
+                        <CheckCircle className="w-3.5 h-3.5 text-[#147D64] shrink-0" />
                         <span className="truncate">{feat}</span>
                       </div>
                     ))}
@@ -72,10 +65,10 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
               </div>
 
               {/* Action */}
-              <div className="p-5 pt-0 border-t border-emerald-800/40 mt-3 flex items-center gap-2">
+              <div className="p-5 pt-0 border-t border-[#147D64]/10 mt-3 flex items-center gap-2">
                 <button
                   onClick={() => onOpenBookingModal({ preferredTransport: car.name })}
-                  className="flex-1 py-2.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/30 text-emerald-300 text-xs font-semibold transition-colors"
+                  className="flex-1 py-2.5 rounded-xl bg-[#FFF8E6] hover:bg-[#F4B400] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold transition-colors"
                 >
                   Book Vehicle
                 </button>
@@ -83,7 +76,7 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
                   href={`https://wa.me/916380939670?text=Hi%2C%20I%20am%20enquiring%20about%20renting%20${encodeURIComponent(car.name)}%20for%20a%20tour.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
+                  className="p-2.5 rounded-xl bg-[#147D64] hover:bg-[#0f6752] text-white transition-colors"
                 >
                   <MessageCircle className="w-4 h-4" />
                 </a>
@@ -93,10 +86,6 @@ export default function VehicleFleetSection({ onOpenBookingModal }) {
         </div>
 
       </div>
-
-      {/* Wave bottom */}
-      <GreenWaveDivider flipped={false} color="fill-emerald-950" />
-
     </section>
   );
 }

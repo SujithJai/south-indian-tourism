@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import HeroVideoSection from './components/HeroVideoSection';
-import DroneShowcaseSection from './components/DroneShowcaseSection';
+import CinematicDroneVoyage from './components/CinematicDroneVoyage';
+import CategoryStrip from './components/CategoryStrip';
+import PopularDestinationsSection from './components/PopularDestinationsSection';
+import TripBannerCTA from './components/TripBannerCTA';
 import FeaturedPackagesSection from './components/FeaturedPackagesSection';
 import ShivaTempleSection from './components/ShivaTempleSection';
 import VehicleFleetSection from './components/VehicleFleetSection';
-import WhyChooseUsSection from './components/WhyChooseUsSection';
 import PlanYourTripSection from './components/PlanYourTripSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import FaqSection from './components/FaqSection';
@@ -26,70 +27,88 @@ export default function App() {
     setIsBookingModalOpen(true);
   };
 
-  const handleSelectDestinationFromSearch = (dest) => {
-    handleOpenBooking({ destination: dest.name, category: dest.category });
+  const handleSelectDestination = (dest) => {
+    handleOpenBooking({
+      destination: dest.name,
+      category: dest.category
+    });
+  };
+
+  const handleSelectCategory = (catName) => {
+    handleOpenBooking({
+      tourType: `${catName} Tour`,
+      destination: catName === 'Temples' ? 'Madurai / Thanjavur' : catName === 'Hill Stations' ? 'Ooty / Munnar' : 'South India'
+    });
   };
 
   return (
-    <div className="min-h-screen bg-emerald-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F0F7F4] text-[#1F2937] flex flex-col font-sans selection:bg-[#F4B400] selection:text-[#1F2937]">
       
-      {/* Top Fixed Navigation */}
+      {/* Top Fixed Navbar */}
       <Navbar 
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenBookingModal={() => handleOpenBooking()}
       />
 
-      {/* Main Content Sections */}
       <main className="flex-1">
-        {/* 1. Hero Drone Section */}
-        <HeroVideoSection 
+        {/* 1. Cinematic Fullscreen 4K Drone Voyage (Tamil Nadu -> Kerala -> Karnataka -> Andhra Pradesh) */}
+        <CinematicDroneVoyage 
+          onOpenBookingModal={(data) => handleOpenBooking(data)}
+        />
+
+        {/* 2. Category Strip from UI Reference Guide (Temples, Hill Stations, Beaches, Backwaters, Wildlife, Culture) */}
+        <div id="explore-sections">
+          <CategoryStrip onSelectCategory={handleSelectCategory} />
+        </div>
+
+        {/* 3. Popular Destinations Section (Madurai, Munnar, Hampi, Pondicherry, Ooty, Coorg) */}
+        <PopularDestinationsSection 
+          onSelectDestination={handleSelectDestination}
+        />
+
+        {/* 4. Plan Your South India Trip Banner CTA */}
+        <TripBannerCTA 
           onOpenBookingModal={() => handleOpenBooking()}
         />
 
-        {/* 2. Karnataka & Tamil Nadu Cinematic Drone Showcase */}
-        <DroneShowcaseSection 
-          onSelectPackageForBooking={(place) => handleOpenBooking(place)}
-        />
-
-        {/* 3. Featured Tour Packages (5, 6, 7 Days) */}
+        {/* 5. Featured Tour Packages (5, 6, 7 Days) */}
         <FeaturedPackagesSection 
-          onOpenBookingModal={() => handleOpenBooking()}
+          onOpenBookingModal={(pkg) => handleOpenBooking(pkg)}
         />
 
-        {/* 4. Dedicated Shiva Temple Tours (Pancha Bhoota & Jyotirlinga) */}
+        {/* 6. Dedicated Shiva Temple Tours */}
         <ShivaTempleSection 
           onOpenBookingModal={(data) => handleOpenBooking(data)}
         />
 
-        {/* 5. Luxury Vehicle & Tempo Traveller Fleet */}
+        {/* 7. Luxury Vehicle & Tempo Traveller Fleet */}
         <VehicleFleetSection 
           onOpenBookingModal={(data) => handleOpenBooking(data)}
         />
 
-        {/* 6. Why Choose Us (15 Years Experience & Highlights) */}
-        <WhyChooseUsSection />
+        {/* 8. Plan Your Perfect Trip - Lead Generation Quote Form */}
+        <PlanYourTripSection 
+          initialData={modalInitialData}
+        />
 
-        {/* 7. Plan Your Trip / Lead Generation Form */}
-        <PlanYourTripSection initialData={modalInitialData} />
-
-        {/* 8. Traveller Testimonials */}
+        {/* 9. Traveller Stories / Testimonials */}
         <TestimonialsSection />
 
-        {/* 9. Frequently Asked Questions */}
+        {/* 10. Frequently Asked Questions */}
         <FaqSection />
 
-        {/* 10. About Us (Mohanur, Namakkal) */}
+        {/* 11. About Us (Mohanur, Namakkal) */}
         <AboutUsSection />
 
-        {/* 11. Contact Us */}
+        {/* 12. Contact Us */}
         <ContactUsSection 
           onOpenBookingModal={() => handleOpenBooking()}
         />
       </main>
 
-      {/* 12. Complete 4-Column Footer */}
+      {/* 13. Complete Footer */}
       <Footer 
-        onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
+        onSelectDestination={handleSelectDestination}
       />
 
       {/* Floating Action Hub (WhatsApp & Phone) */}
@@ -101,7 +120,7 @@ export default function App() {
       <DestinationSearchModal 
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        onSelectDestination={handleSelectDestinationFromSearch}
+        onSelectDestination={handleSelectDestination}
       />
 
       {/* Quick Booking Modal */}

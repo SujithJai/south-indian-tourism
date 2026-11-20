@@ -1,30 +1,24 @@
 import React from 'react';
 import { SHIVA_TEMPLES, BUSINESS_INFO } from '../data/tourismData';
-import { Sparkles, MapPin, Phone, MessageCircle, ArrowRight } from 'lucide-react';
-import GreenWaveDivider from './GreenWaveDivider';
+import { Sparkles, MapPin, Phone, MessageCircle } from 'lucide-react';
 
 export default function ShivaTempleSection({ onOpenBookingModal }) {
   return (
-    <section id="shiva-temples" className="relative bg-gradient-to-b from-emerald-950 via-slate-950 to-emerald-950 py-20 text-white overflow-hidden">
+    <section id="shiva-temples" className="py-20 bg-[#0B4D3B] text-white overflow-hidden relative">
       
-      {/* Top Wave */}
-      <GreenWaveDivider flipped={true} color="fill-slate-950" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-semibold mb-3 shadow-lg">
-            <Sparkles className="w-4 h-4 text-amber-400 animate-spin-slow" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#147D64]/60 border border-[#F4B400]/40 text-[#F4B400] text-xs font-bold mb-3 shadow-lg">
+            <Sparkles className="w-4 h-4 text-[#F4B400]" />
             <span>Divine Pilgrimage • சிவ தலம் யாத்திரை</span>
           </div>
-          <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
             South Indian <br />
-            <span className="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-500 bg-clip-text text-transparent">
-              Shiva Temple Tours
-            </span>
+            <span className="text-[#FFD166]">Shiva Temple Tours</span>
           </h2>
-          <p className="mt-3 text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
+          <p className="mt-3 text-slate-200 text-xs sm:text-sm md:text-base leading-relaxed">
             பஞ்ச பூத ஸ்தலங்கள் (நிலம், நீர், நெருப்பு, காற்று, ஆகாயம்) மற்றும் தென்னிந்தியாவின் வரலாற்று சிறப்புமிக்க சிவ தலங்களுக்கான பிரத்யேக ஆன்மீக யாத்திரை பேக்கேஜ்கள்.
           </p>
         </div>
@@ -34,7 +28,7 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
           {SHIVA_TEMPLES.map((temple, idx) => (
             <div 
               key={idx}
-              className="group glass-card rounded-3xl overflow-hidden border border-amber-500/20 hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+              className="group bg-white rounded-3xl overflow-hidden border border-[#F4B400]/30 hover:border-[#F4B400] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between shadow-xl text-[#1F2937]"
             >
               <div>
                 <div className="relative h-56 w-full overflow-hidden">
@@ -43,35 +37,35 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
                     alt={temple.name}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   
                   {/* Temple Type Badge */}
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-amber-500/90 text-slate-950 text-[11px] font-bold tracking-wide uppercase shadow">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#F4B400] text-[#1F2937] text-[11px] font-extrabold tracking-wide uppercase shadow">
                     {temple.type}
                   </span>
 
                   {/* State Pill */}
-                  <span className="absolute bottom-3 left-4 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/20 text-white text-xs font-medium flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="absolute bottom-3 left-4 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md text-white text-xs font-semibold flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-[#F4B400]" />
                     {temple.state}
                   </span>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="font-cinzel text-xl font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
+                  <h3 className="font-heading text-xl font-bold text-[#0B4D3B] group-hover:text-[#147D64] transition-colors leading-snug">
                     {temple.name}
                   </h3>
-                  <p className="mt-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="mt-2.5 text-xs sm:text-sm text-[#6B7280] leading-relaxed">
                     {temple.highlight}
                   </p>
                 </div>
               </div>
 
               {/* Action buttons */}
-              <div className="p-6 pt-0 border-t border-amber-500/10 flex items-center gap-2">
+              <div className="p-6 pt-0 border-t border-[#147D64]/10 flex items-center gap-2">
                 <button
                   onClick={() => onOpenBookingModal({ destination: temple.name, tourType: 'Temple Tour' })}
-                  className="flex-1 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-300 text-xs font-semibold transition-colors text-center"
+                  className="flex-1 py-2.5 rounded-xl bg-[#FFF8E6] hover:bg-[#F4B400] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold transition-all text-center"
                 >
                   Book Shiva Yatra
                 </button>
@@ -79,7 +73,7 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
                   href={`https://wa.me/916380939670?text=Namaste%2C%20I%20would%20like%20to%20plan%20a%20pilgrimage%20to%20${encodeURIComponent(temple.name)}.`}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
+                  className="p-2.5 rounded-xl bg-[#147D64] hover:bg-[#0f6752] text-white transition-colors"
                   title="WhatsApp Enquiry"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -90,19 +84,19 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
         </div>
 
         {/* Dedicated Yatra Package Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-amber-950/60 via-slate-900 to-emerald-950 border border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0B4D3B] via-[#147D64] to-[#0B4D3B] border border-[#F4B400]/40 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="max-w-xl text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Exclusive Pilgrimage Fleet</span>
-            <h3 className="font-cinzel text-xl sm:text-2xl font-bold text-white mt-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#FFD166]">Exclusive Pilgrimage Fleet</span>
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-white mt-1">
               Pancha Bhoota & Jyotirlinga Special Tempo Travellers
             </h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-300">
+            <p className="mt-2 text-xs sm:text-sm text-slate-200">
               குடும்பத்துடன் ஆன்மீக யாத்திரை செல்ல வசதியான 12, 17 மற்றும் 20 சீட்டர் புஷ்பேக் ஏசி டெம்போ டிராவலர்கள் அனுபவமிக்க ஓட்டுநர்களுடன் கிடைக்கும்.
             </p>
           </div>
           <a
             href={`tel:${BUSINESS_INFO.primaryPhone}`}
-            className="px-8 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-xl shadow-amber-500/20 hover:scale-105 transition-all flex items-center gap-2 shrink-0"
+            className="px-8 py-3.5 rounded-full bg-[#F4B400] hover:bg-[#e0a600] text-[#1F2937] font-extrabold text-sm shadow-xl hover:scale-105 transition-all flex items-center gap-2 shrink-0"
           >
             <Phone className="w-4 h-4" />
             <span>Call {BUSINESS_INFO.primaryPhone}</span>
@@ -110,9 +104,6 @@ export default function ShivaTempleSection({ onOpenBookingModal }) {
         </div>
 
       </div>
-
-      {/* Bottom Wave */}
-      <GreenWaveDivider flipped={false} color="fill-emerald-950" />
 
     </section>
   );
