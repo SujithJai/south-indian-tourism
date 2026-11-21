@@ -1,5 +1,6 @@
 import React from 'react';
 import { BUSINESS_INFO, THEME_COLORS } from '../data/tourismData';
+import { Link } from 'react-router-dom';
 import { 
   Phone, 
   MessageCircle, 
@@ -24,16 +25,16 @@ export default function Footer({ onSelectDestination }) {
           
           {/* Column 1: Business Information */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md">
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md group-hover:scale-105 transition-transform">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
                 </svg>
               </div>
-              <span className="font-heading text-xl font-bold text-white block leading-tight">
+              <span className="font-heading text-xl font-bold text-white block leading-tight group-hover:text-[#E7CFA3] transition-colors">
                 South Indian Tourism
               </span>
-            </div>
+            </Link>
 
             <p className="text-xs text-slate-200 leading-relaxed">
               A video-first, scroll-based tourism platform taking you on a cinematic journey across Tamil Nadu, Kerala, Karnataka, and Andhra & Telangana.
@@ -75,21 +76,24 @@ export default function Footer({ onSelectDestination }) {
             
             <ul className="space-y-2 text-xs">
               {[
-                { label: 'Destinations', href: '#drone-voyage' },
-                { label: 'Experiences', href: '#website-sections' },
-                { label: 'Tours & Packages', href: '#packages-section' },
-                { label: 'Travel Guide', href: '#website-sections' },
-                { label: 'Culture & Heritage', href: '#website-sections' },
-                { label: 'Plan Your Trip', href: '#plan-trip' }
+                { label: 'Destinations (30+)', to: '/destinations' },
+                { label: 'Experiences (8)', to: '/experiences' },
+                { label: 'Tours & Packages', to: '/tour-packages' },
+                { label: 'Shiva Temples', to: '/shiva-temples' },
+                { label: 'Travel Guide', to: '/travel-guide' },
+                { label: 'Culture & Heritage', to: '/culture-heritage' },
+                { label: 'Plan Your Trip', to: '/plan-your-trip' },
+                { label: 'About Us', to: '/about' },
+                { label: 'Contact Us', to: '/contact' }
               ].map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="hover:text-[#E7CFA3] transition-colors flex items-center gap-1.5 group text-slate-200"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#F4B400] group-hover:translate-x-1 transition-transform" />
                     <span>{link.label}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -110,8 +114,8 @@ export default function Footer({ onSelectDestination }) {
                 { name: 'Andhra & Telangana', desc: 'Tirupati, Araku, Vizag, Hyderabad' }
               ].map((dest, idx) => (
                 <li key={idx}>
-                  <a
-                    href="#drone-voyage"
+                  <Link
+                    to={`/destinations?state=${encodeURIComponent(dest.name)}`}
                     className="block group hover:text-[#E7CFA3] transition-colors"
                   >
                     <div className="font-semibold text-white group-hover:text-[#F4B400] flex items-center gap-1">
@@ -121,7 +125,7 @@ export default function Footer({ onSelectDestination }) {
                     <span className="text-[10px] text-slate-300 block pl-4">
                       {dest.desc}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

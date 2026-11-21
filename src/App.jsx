@@ -1,17 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
-import FlightMapIntro from './components/FlightMapIntro';
-import CinematicDroneVoyage from './components/CinematicDroneVoyage';
-import WebsiteSectionsGrid from './components/WebsiteSectionsGrid';
-import FeaturedPackagesSection from './components/FeaturedPackagesSection';
-import PlanYourTripSection from './components/PlanYourTripSection';
 import Footer from './components/Footer';
-import WatchVideoModal from './components/WatchVideoModal';
-import SectionDetailModal from './components/SectionDetailModal';
-import DestinationSearchModal from './components/DestinationSearchModal';
-import BookingModal from './components/BookingModal';
 import FloatingActions from './components/FloatingActions';
-import { CINEMATIC_JOURNEY_STAGES } from './data/tourismData';
+import FlightMapIntro from './components/FlightMapIntro';
+import BookingModal from './components/BookingModal';
+import DestinationSearchModal from './components/DestinationSearchModal';
+import WatchVideoModal from './components/WatchVideoModal';
+
+// Dedicated Landing Pages
+import HomePage from './pages/HomePage';
+import DestinationsPage from './pages/DestinationsPage';
+import ExperiencesPage from './pages/ExperiencesPage';
+import TourPackagesPage from './pages/TourPackagesPage';
+import ShivaTemplesPage from './pages/ShivaTemplesPage';
+import TravelGuidePage from './pages/TravelGuidePage';
+import CultureHeritagePage from './pages/CultureHeritagePage';
+import PlanYourTripPage from './pages/PlanYourTripPage';
+import AboutUsPage from './pages/AboutUsPage';
+import ContactUsPage from './pages/ContactUsPage';
 
 export default function App() {
   const [showFlightIntro, setShowFlightIntro] = useState(true);
@@ -22,9 +30,6 @@ export default function App() {
   
   // Watch Video Modal state
   const [activeVideoModalStage, setActiveVideoModalStage] = useState(null);
-
-  // Section Detail Modal state (for the 6 website section cards)
-  const [activeSectionCardId, setActiveSectionCardId] = useState(null);
 
   // Lock body scroll while opening flight intro is active
   useEffect(() => {
@@ -60,101 +65,116 @@ export default function App() {
     setActiveVideoModalStage(stage);
   };
 
-  const handleSectionCardClick = (cardId) => {
-    if (cardId === 'plan-your-trip') {
-      handleOpenBooking();
-    } else {
-      setActiveSectionCardId(cardId);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#F8F4E6] text-[#5A3E2B] flex flex-col font-sans selection:bg-[#F4B400] selection:text-[#0B4D3B]">
-      
-      {/* 1. Opening Flight Map Animation (0 - 10s) with Cinematic Dissolve into Hero */}
-      {showFlightIntro && (
-        <div 
-          className={`fixed inset-0 z-50 transition-opacity duration-1000 ease-in-out ${
-            isIntroFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-        >
-          <FlightMapIntro onCompleteIntro={handleFinishIntro} />
-        </div>
-      )}
+    <BrowserRouter>
+      {/* Scroll to Top on every route change */}
+      <ScrollToTop />
 
-      {/* Top Fixed Minimal Luxury Navbar */}
-      <Navbar 
-        onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenBookingModal={() => handleOpenBooking()}
-      />
+      <div className="min-h-screen bg-[#F8F4E6] text-[#5A3E2B] flex flex-col font-sans selection:bg-[#F4B400] selection:text-[#0B4D3B]">
+        
+        {/* 1. Opening Flight Map Animation with Cinematic Dissolve */}
+        {showFlightIntro && (
+          <div 
+            className={`fixed inset-0 z-50 transition-opacity duration-1000 ease-in-out ${
+              isIntroFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
+          >
+            <FlightMapIntro onCompleteIntro={handleFinishIntro} />
+          </div>
+        )}
 
-      <main className="flex-1">
-        {/* 2. Full-Page Scroll-Driven Cinematic Drone Voyage (Tamil Nadu -> Kerala -> Karnataka -> Andhra & Telangana) */}
-        <CinematicDroneVoyage 
-          onOpenBookingModal={handleOpenBooking}
-          onOpenVideoModal={handleOpenVideoModal}
-          onReplayFlightIntro={handleReplayIntro}
+        {/* Top Fixed Minimal Luxury Navbar */}
+        <Navbar 
+          onOpenSearch={() => setIsSearchOpen(true)}
+          onOpenBookingModal={() => handleOpenBooking()}
         />
 
-        {/* 3. The 6 Website Section Cards (After the Video Journey - After 50s) */}
-        <WebsiteSectionsGrid 
-          onCardClick={handleSectionCardClick}
-        />
+        {/* Main Routed Content */}
+        <main className="flex-1">
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onOpenBooking={handleOpenBooking}
+                  onOpenVideoModal={handleOpenVideoModal}
+                  onReplayFlightIntro={handleReplayIntro}
+                />
+              } 
+            />
+            <Route 
+              path="/destinations" 
+              element={<DestinationsPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/experiences" 
+              element={<ExperiencesPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/tour-packages" 
+              element={<TourPackagesPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/shiva-temples" 
+              element={<ShivaTemplesPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/travel-guide" 
+              element={<TravelGuidePage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/culture-heritage" 
+              element={<CultureHeritagePage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/plan-your-trip" 
+              element={<PlanYourTripPage initialData={modalInitialData} />} 
+            />
+            <Route 
+              path="/about" 
+              element={<AboutUsPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route 
+              path="/contact" 
+              element={<ContactUsPage onOpenBooking={handleOpenBooking} />} 
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
 
-        {/* 4. Tours & Packages */}
-        <div id="packages-section">
-          <FeaturedPackagesSection 
-            onOpenBookingModal={(pkg) => handleOpenBooking(pkg)}
-          />
-        </div>
-
-        {/* 5. Plan Your Trip Form */}
-        <PlanYourTripSection 
-          initialData={modalInitialData}
-        />
-      </main>
-
-      {/* 6. Footer in Deep Green #0B4D3B & Sandal #E7CFA3 */}
-      <div id="about-section">
+        {/* Footer in Deep Green #0B4D3B & Sandal #E7CFA3 */}
         <Footer 
           onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
         />
+
+        {/* Floating Action Hub (WhatsApp & Phone) */}
+        <FloatingActions 
+          onOpenBookingModal={() => handleOpenBooking()}
+        />
+
+        {/* Watch Video Fullscreen Modal */}
+        <WatchVideoModal 
+          isOpen={!!activeVideoModalStage}
+          stageData={activeVideoModalStage}
+          onClose={() => setActiveVideoModalStage(null)}
+          onOpenBooking={handleOpenBooking}
+        />
+
+        {/* Destination Search Modal */}
+        <DestinationSearchModal 
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
+        />
+
+        {/* Booking / Enquiry Modal */}
+        <BookingModal 
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          initialData={modalInitialData}
+        />
+
       </div>
-
-      {/* Floating Action Hub (WhatsApp & Phone) */}
-      <FloatingActions 
-        onOpenBookingModal={() => handleOpenBooking()}
-      />
-
-      {/* Watch Video Fullscreen Modal */}
-      <WatchVideoModal 
-        isOpen={!!activeVideoModalStage}
-        stageData={activeVideoModalStage}
-        onClose={() => setActiveVideoModalStage(null)}
-        onOpenBooking={handleOpenBooking}
-      />
-
-      {/* Section Detail Modal (for 6 cards) */}
-      <SectionDetailModal 
-        activeCardId={activeSectionCardId}
-        onClose={() => setActiveSectionCardId(null)}
-        onOpenBooking={handleOpenBooking}
-      />
-
-      {/* Destination Search Modal */}
-      <DestinationSearchModal 
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectDestination={(dest) => handleOpenBooking({ destination: dest.name })}
-      />
-
-      {/* Booking / Enquiry Modal */}
-      <BookingModal 
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-        initialData={modalInitialData}
-      />
-
-    </div>
+    </BrowserRouter>
   );
 }
