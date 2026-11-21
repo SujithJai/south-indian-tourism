@@ -133,7 +133,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
                   muted
                   playsInline
                   poster={stage.posterImage}
-                  className="w-full h-full object-cover object-center filter brightness-[0.7] contrast-[1.1] transition-transform duration-700"
+                  className="w-full h-full object-cover object-center filter brightness-100 contrast-100 transition-transform duration-700"
                 >
                   <source src={stage.localVideo} type="video/mp4" />
                   <source src={stage.droneVideo} type="video/mp4" />
@@ -142,9 +142,12 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             );
           })}
 
-          {/* Gradients matching #0B4D3B -> #147D64 from UI Spec */}
-          <div className="absolute inset-0 z-15 bg-gradient-to-r from-[#0B4D3B]/90 via-[#0B4D3B]/50 to-[#0B4D3B]/80"></div>
-          <div className="absolute inset-0 z-15 bg-gradient-to-t from-[#0B4D3B] via-transparent to-black/75"></div>
+          {/* Light Left Vignette for Crisp Text Readability without Obscuring Drone Video */}
+          <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 lg:w-1/2 z-10 bg-gradient-to-r from-black/75 via-black/35 to-transparent pointer-events-none"></div>
+
+          {/* Gentle Top & Bottom Fades for Navbar and Controls */}
+          <div className="absolute inset-x-0 top-0 h-28 z-10 bg-gradient-to-b from-black/50 via-black/15 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-x-0 bottom-0 h-28 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
         </div>
 
         {/* Top Spacer under Navbar */}
@@ -183,76 +186,79 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
 
         </div>
 
-        {/* Center Main Stage Content matching Mockup Laptop Screen */}
-        <div className="relative z-30 max-w-5xl mx-auto px-6 text-center flex flex-col items-center justify-center flex-1 my-auto">
-          
-          {/* "EXPLORE SOUTH INDIA" in spaced Sandal #E7CFA3 */}
-          <div className="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.35em] text-[#E7CFA3] drop-shadow-md mb-2">
-            {activeStage.titlePrefix}
-          </div>
-
-          {/* Majestic State Name in Italic Serif with Golden Flourish Underline */}
-          <div className="relative inline-block my-2">
-            <h1 className="font-heading italic text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-2xl tracking-tight">
-              {activeStage.stateName}
-            </h1>
+        {/* Left Corner Main Stage Content */}
+        <div className="relative z-30 max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 w-full flex-1 flex flex-col justify-center items-start text-left my-auto">
+          <div className="max-w-2xl">
             
-            {/* Golden Curved Flourish Underline as in user blueprint */}
-            <svg 
-              className="w-full h-8 sm:h-12 -mt-2 sm:-mt-4 text-[#F4B400]" 
-              viewBox="0 0 300 30" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d="M10 20 C 70 5, 120 30, 180 15 C 230 2, 270 20, 290 12" 
-                stroke="url(#flourishGrad)" 
-                strokeWidth="4" 
-                strokeLinecap="round"
-                className="flourish-animated"
-              />
-              <defs>
-                <linearGradient id="flourishGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#F4B400" />
-                  <stop offset="50%" stopColor="#E7CFA3" />
-                  <stop offset="100%" stopColor="#F4B400" />
-                </linearGradient>
-              </defs>
-            </svg>
+            {/* "EXPLORE SOUTH INDIA" in spaced Sandal #E7CFA3 */}
+            <div className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.35em] text-[#E7CFA3] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-2 flex items-center gap-2">
+              <span className="w-6 h-0.5 bg-[#F4B400]"></span>
+              <span>{activeStage.titlePrefix}</span>
+            </div>
+
+            {/* Majestic State Name in Italic Serif with Golden Flourish Underline */}
+            <div className="relative inline-block my-1">
+              <h1 className="font-heading italic text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)] tracking-tight leading-none">
+                {activeStage.stateName}
+              </h1>
+              
+              {/* Golden Curved Flourish Underline */}
+              <svg 
+                className="w-full h-8 sm:h-12 -mt-2 sm:-mt-4 text-[#F4B400]" 
+                viewBox="0 0 300 30" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M10 20 C 70 5, 120 30, 180 15 C 230 2, 270 20, 290 12" 
+                  stroke="url(#flourishGrad)" 
+                  strokeWidth="4" 
+                  strokeLinecap="round"
+                  className="flourish-animated"
+                />
+                <defs>
+                  <linearGradient id="flourishGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#F4B400" />
+                    <stop offset="50%" stopColor="#E7CFA3" />
+                    <stop offset="100%" stopColor="#F4B400" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            {/* Subtitle / Tagline from blueprint */}
+            <p className="text-lg sm:text-2xl font-bold text-[#E7CFA3] mt-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] tracking-wide">
+              {activeStage.tagline}
+            </p>
+            <p className="text-xs sm:text-sm text-slate-100 mt-1 max-w-xl font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] leading-relaxed">
+              {activeStage.famousSpots}
+            </p>
+
+            {/* Watch Video Pill Button from Mockup */}
+            <div className="mt-8 flex flex-wrap items-center justify-start gap-4">
+              <button
+                onClick={() => onOpenVideoModal(activeStage)}
+                className="px-8 py-3.5 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-[#E7CFA3]/60 text-white font-bold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 glow-sandal"
+              >
+                <div className="w-6 h-6 rounded-full bg-[#F4B400] text-[#0B4D3B] flex items-center justify-center font-bold">
+                  <Play className="w-3.5 h-3.5 fill-[#0B4D3B]" />
+                </div>
+                <span>Watch Video</span>
+              </button>
+
+              <button
+                onClick={() => onOpenBookingModal({
+                  destination: activeStage.famousSpots,
+                  state: activeStage.stateName
+                })}
+                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F4B400] to-[#E7CFA3] hover:from-[#e5a700] hover:to-[#dfc38f] text-[#0B4D3B] font-extrabold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 glow-gold"
+              >
+                <span>Plan Trip to {activeStage.stateName.split(' ')[0]}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
           </div>
-
-          {/* Subtitle / Tagline from blueprint */}
-          <p className="text-base sm:text-xl font-bold text-[#E7CFA3] mt-1 drop-shadow tracking-wide">
-            {activeStage.tagline}
-          </p>
-          <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-xl font-medium drop-shadow">
-            {activeStage.famousSpots}
-          </p>
-
-          {/* Watch Video Pill Button from Mockup */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => onOpenVideoModal(activeStage)}
-              className="px-8 py-3.5 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur-md border border-[#E7CFA3]/60 text-white font-bold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 glow-sandal"
-            >
-              <div className="w-6 h-6 rounded-full bg-[#F4B400] text-[#0B4D3B] flex items-center justify-center font-bold">
-                <Play className="w-3.5 h-3.5 fill-[#0B4D3B]" />
-              </div>
-              <span>Watch Video</span>
-            </button>
-
-            <button
-              onClick={() => onOpenBookingModal({
-                destination: activeStage.famousSpots,
-                state: activeStage.stateName
-              })}
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F4B400] to-[#E7CFA3] hover:from-[#e5a700] hover:to-[#dfc38f] text-[#0B4D3B] font-extrabold text-sm sm:text-base shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 glow-gold"
-            >
-              <span>Plan Trip to {activeStage.stateName.split(' ')[0]}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
         </div>
 
         {/* Bottom Navigation & Scroll to Explore */}
