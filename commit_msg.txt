@@ -1,1 +1,0 @@
-fix: add react-router-dom to package.json dependencies and configure vercel.json SPA rewrites
