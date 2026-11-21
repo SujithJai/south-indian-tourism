@@ -108,10 +108,10 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
     <div 
       ref={trackRef}
       id="drone-voyage"
-      className="relative w-full h-[400vh] bg-[#051F17]"
+      className="relative w-full h-[400vh] bg-[#F8F4E6]"
     >
       {/* Sticky Fullscreen Screen Pinned Over Scroll */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between text-white">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between text-white bg-[#051F17]">
         
         {/* Layered 4K Drone Background Videos with Crossfade */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -268,7 +268,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
         </div>
 
         {/* Bottom Navigation & Scroll to Explore */}
-        <div className="relative z-30 pb-6 sm:pb-8 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="relative z-30 pb-10 sm:pb-12 md:pb-14 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           
           {/* Left placeholder to keep center aligned */}
           <div className="hidden sm:block w-36"></div>
@@ -311,9 +311,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             (No horizontal cut, no cream gap above wave; video plays directly behind)
            ======================================================== */}
         <div 
-          className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none transition-all duration-700 ease-out ${
-            activeStageIdx === 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-          }`}
+          className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none overflow-hidden"
           aria-hidden="true"
         >
           <svg
@@ -344,6 +342,10 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             <path
               d="M 0,132 C 220,142 360,174 540,164 C 720,154 910,54 1070,54 C 1220,54 1335,104 1440,120 L 1440,240 L 0,240 Z"
               fill="url(#waveForestGreenGrad)"
+              style={{
+                transform: `translate3d(${(scrollProgress - 0.5) * -12}px, ${Math.sin(scrollProgress * Math.PI) * -3}px, 0)`,
+                transition: "transform 0.15s ease-out"
+              }}
             />
 
             {/* 2. Crisp Golden Ribbon Stripe (Contour along Crest) */}
@@ -353,12 +355,20 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
               strokeWidth="6"
               strokeLinecap="round"
               fill="none"
+              style={{
+                transform: `translate3d(${(scrollProgress - 0.5) * -16}px, ${Math.sin(scrollProgress * Math.PI) * -3.5}px, 0)`,
+                transition: "transform 0.15s ease-out"
+              }}
             />
 
             {/* 3. Solid Warm Ivory Cream Body (#F8F4E6) */}
             <path
               d="M 0,141 C 220,151 360,183 540,173 C 720,163 910,63 1070,63 C 1220,63 1335,113 1440,129 L 1440,240 L 0,240 Z"
               fill="#F8F4E6"
+              style={{
+                transform: `translate3d(${(scrollProgress - 0.5) * -16}px, ${Math.sin(scrollProgress * Math.PI) * -3.5}px, 0)`,
+                transition: "transform 0.15s ease-out"
+              }}
             />
           </svg>
         </div>
