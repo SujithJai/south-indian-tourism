@@ -268,7 +268,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
         </div>
 
         {/* Bottom Navigation & Scroll to Explore */}
-        <div className="relative z-30 pb-6 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="relative z-30 pb-6 sm:pb-8 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           
           {/* Left: Replay Flight Intro */}
           <button
@@ -310,6 +310,75 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             })}
           </div>
 
+        </div>
+
+        {/* ========================================================
+            Organic Multi-Layer Wave Transition DIRECTLY Over Video
+            (No horizontal cut, no cream gap above wave; video plays directly behind)
+           ======================================================== */}
+        <div 
+          className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none transition-all duration-700 ease-out ${
+            activeStageIdx === 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+          }`}
+          aria-hidden="true"
+        >
+          <svg
+            viewBox="0 0 1440 240"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="w-full h-24 sm:h-32 md:h-40 lg:h-48 xl:h-52 block overflow-visible"
+          >
+            <defs>
+              {/* Deep Forest Green Gradient for Upper Wave Ribbon */}
+              <linearGradient id="waveForestGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0B4D3B" stopOpacity="0.95" />
+                <stop offset="50%" stopColor="#083B2D" stopOpacity="0.98" />
+                <stop offset="100%" stopColor="#051F17" stopOpacity="1" />
+              </linearGradient>
+
+              {/* Crisp Golden Ribbon Gradient */}
+              <linearGradient id="waveGoldStripeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#F4B400" />
+                <stop offset="35%" stopColor="#FFD166" />
+                <stop offset="70%" stopColor="#F4B400" />
+                <stop offset="100%" stopColor="#E7CFA3" />
+              </linearGradient>
+            </defs>
+
+            {/* 1. Upper Deep Forest Green Wave Ribbon */}
+            <path
+              d="M 0,132 C 220,142 360,174 540,164 C 720,154 910,54 1070,54 C 1220,54 1335,104 1440,120 L 1440,240 L 0,240 Z"
+              fill="url(#waveForestGreenGrad)"
+            />
+
+            {/* 2. Crisp Golden Ribbon Stripe (Contour along Crest) */}
+            <path
+              d="M 0,138 C 220,148 360,180 540,170 C 720,160 910,60 1070,60 C 1220,60 1335,110 1440,126"
+              stroke="url(#waveGoldStripeGrad)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              fill="none"
+            />
+
+            {/* 3. Solid Warm Ivory Cream Body (#F8F4E6) */}
+            <path
+              d="M 0,141 C 220,151 360,183 540,173 C 720,163 910,63 1070,63 C 1220,63 1335,113 1440,129 L 1440,240 L 0,240 Z"
+              fill="#F8F4E6"
+            />
+
+            {/* 4. Bottom-Left Secondary Wave Accent (matching user image) */}
+            <path
+              d="M 0,186 C 80,186 150,212 215,240 L 0,240 Z"
+              fill="#0B4D3B"
+            />
+            <path
+              d="M 0,186 C 80,186 150,212 215,240"
+              stroke="url(#waveGoldStripeGrad)"
+              strokeWidth="4"
+              fill="none"
+            />
+          </svg>
         </div>
 
       </div>
