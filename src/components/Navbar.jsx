@@ -28,44 +28,45 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
 
   return (
     <>
+      {/* Floating Capsule Pop-up Navbar: 50% opacity, 10% Left & Right Offset, Rounded-Full */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed top-3 sm:top-5 left-[4%] right-[4%] sm:left-[8%] sm:right-[8%] lg:left-[10%] lg:right-[10%] z-50 transition-all duration-300 ease-out ${
+          isVisible ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-12 opacity-0 scale-95 pointer-events-none'
         } ${
           isScrolled
-            ? 'bg-[#0B4D3B]/95 backdrop-blur-md shadow-xl py-3 border-b border-[#147D64]/20'
-            : 'bg-transparent py-5'
-        }`}
+            ? 'bg-[#0B4D3B]/60 border-white/25 shadow-[0_14px_40px_rgba(0,0,0,0.55)]'
+            : 'bg-[#0B4D3B]/50 border-white/20 shadow-[0_10px_35px_rgba(0,0,0,0.45)]'
+        } backdrop-blur-xl border rounded-full py-2 sm:py-2.5 px-4 sm:px-7`}
       >
-        <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           
           {/* Logo & Brand matching blueprint (Gopuram icon + South Indian Tourism) */}
-          <a href="#drone-voyage" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md group-hover:scale-105 transition-transform">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <a href="#drone-voyage" className="flex items-center gap-2.5 group shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md group-hover:scale-105 transition-transform shrink-0">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
               </svg>
             </div>
-            <span className="font-heading text-lg font-bold tracking-tight text-white block leading-tight group-hover:text-[#E7CFA3] transition-colors drop-shadow">
+            <span className="font-heading text-base sm:text-lg font-bold tracking-tight text-white block leading-tight group-hover:text-[#E7CFA3] transition-colors drop-shadow">
               South Indian <span className="font-normal opacity-90">Tourism</span>
             </span>
           </a>
 
           {/* Minimal Clean Menu from blueprint: Destinations, Experiences, Tours, Travel Guide, About */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-white/90">
-            <a href="#drone-voyage" className="hover:text-[#E7CFA3] transition-colors">Destinations</a>
-            <a href="#website-sections" className="hover:text-[#E7CFA3] transition-colors">Experiences</a>
-            <a href="#packages-section" className="hover:text-[#E7CFA3] transition-colors">Tours</a>
-            <a href="#website-sections" className="hover:text-[#E7CFA3] transition-colors">Travel Guide</a>
-            <a href="#about-section" className="hover:text-[#E7CFA3] transition-colors">About</a>
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-bold uppercase tracking-wider text-white/90">
+            <a href="#drone-voyage" className="hover:text-[#F4B400] transition-colors">Destinations</a>
+            <a href="#website-sections" className="hover:text-[#F4B400] transition-colors">Experiences</a>
+            <a href="#packages-section" className="hover:text-[#F4B400] transition-colors">Tours</a>
+            <a href="#website-sections" className="hover:text-[#F4B400] transition-colors">Travel Guide</a>
+            <a href="#about-section" className="hover:text-[#F4B400] transition-colors">About</a>
           </nav>
 
           {/* Right Action: Search icon + Plan Your Trip Gold Pill Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={onOpenSearch}
               title="Search destinations..."
-              className="p-2 rounded-full text-white/80 hover:text-[#F4B400] transition-colors"
+              className="p-1.5 sm:p-2 rounded-full text-white/80 hover:text-[#F4B400] hover:bg-white/10 transition-all"
             >
               <Search className="w-4 h-4" />
             </button>
@@ -73,7 +74,7 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
             {/* "Plan Your Trip" as primary CTA from blueprint */}
             <button
               onClick={() => onOpenBookingModal()}
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-[#F4B400] to-[#E7CFA3] text-[#0B4D3B] text-xs font-extrabold uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-all glow-gold"
+              className="px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#F4B400] to-[#E7CFA3] text-[#0B4D3B] text-[11px] sm:text-xs font-extrabold uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-all glow-gold whitespace-nowrap"
             >
               Plan Your Trip
             </button>
@@ -81,9 +82,9 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-white hover:text-[#F4B400]"
+              className="lg:hidden p-1.5 rounded-lg text-white hover:text-[#F4B400]"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
