@@ -120,7 +120,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "tours-packages",
     title: "Tours & Packages",
     subtitle: "Custom 5-Day, 7-Day and 10-Day day-by-day itineraries",
-    image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
     icon: "packages",
     badge: "Best Value"
   },

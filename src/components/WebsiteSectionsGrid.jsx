@@ -49,8 +49,9 @@ export default function WebsiteSectionsGrid({ onCardClick }) {
         {/* Section Header as in the Blueprint */}
         <div className="mb-10 pb-4 border-b border-[#147D64]/15 flex flex-col sm:flex-row items-start sm:items-end justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold uppercase tracking-wider mb-2">
-              <span>After the Video Journey • 50s+</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#147D64]/20 text-[#0B4D3B] text-xs font-bold uppercase tracking-wider mb-2.5 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#147D64]"></span>
+              <span className="text-[11px] font-extrabold tracking-wider">AFTER THE VIDEO JOURNEY • 50S+</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0B4D3B] tracking-tight">
               Website Sections
