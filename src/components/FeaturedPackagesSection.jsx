@@ -27,12 +27,12 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
     : TOUR_PACKAGES.filter(p => p.state.toLowerCase().includes(filterState.toLowerCase()) || (filterState === 'Shiva' && p.category.includes('Shiva')));
 
   return (
-    <section id="packages" className="py-20 bg-[#F0F7F4] text-[#1F2937]">
+    <section id="packages" className="py-20 bg-[#FAF7EE] text-[#5A3E2B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E6] border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#F4B400]/40 text-[#0B4D3B] text-xs font-bold mb-3 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#F4B400]" />
             <span>Curated Travel Experiences</span>
           </div>
@@ -40,7 +40,7 @@ export default function FeaturedPackagesSection({ onOpenBookingModal }) {
             Popular South India <br />
             <span className="text-[#147D64]">Tour Packages</span>
           </h2>
-          <p className="mt-3 text-[#6B7280] text-sm sm:text-base font-medium">
+          <p className="mt-3 text-[#5A3E2B]/80 text-sm sm:text-base font-medium">
             Day-by-day travel plans across Tamil Nadu, Karnataka, Kerala & Shiva Pilgrimages with comfortable transportation and verified drivers.
           </p>
 

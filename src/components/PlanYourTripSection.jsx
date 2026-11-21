@@ -83,7 +83,7 @@ export default function PlanYourTripSection({ initialData = null }) {
   };
 
   return (
-    <section id="plan-trip" className="py-20 bg-[#FFF8E6] text-[#1F2937]">
+    <section id="plan-trip" className="py-20 bg-[#F8F4E6] text-[#5A3E2B]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -96,7 +96,7 @@ export default function PlanYourTripSection({ initialData = null }) {
             Plan Your Perfect <br />
             <span className="text-[#147D64]">South India Trip</span>
           </h2>
-          <p className="mt-3 text-[#6B7280] text-sm sm:text-base font-medium">
+          <p className="mt-3 text-[#5A3E2B]/80 text-sm sm:text-base font-medium">
             Submit your travel requirements to receive a comprehensive, tailored quotation and day-by-day plan within minutes.
           </p>
         </div>

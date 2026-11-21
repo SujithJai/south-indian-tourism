@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import FlightMapIntro from './components/FlightMapIntro';
 import CinematicDroneVoyage from './components/CinematicDroneVoyage';
@@ -26,18 +26,30 @@ export default function App() {
   // Section Detail Modal state (for the 6 website section cards)
   const [activeSectionCardId, setActiveSectionCardId] = useState(null);
 
-  const handleFinishIntro = () => {
+  // Lock body scroll while opening flight intro is active
+  useEffect(() => {
+    if (showFlightIntro) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showFlightIntro]);
+
+  const handleFinishIntro = useCallback(() => {
     setIsIntroFading(true);
     setTimeout(() => {
       setShowFlightIntro(false);
       setIsIntroFading(false);
     }, 900);
-  };
+  }, []);
 
-  const handleReplayIntro = () => {
+  const handleReplayIntro = useCallback(() => {
     setIsIntroFading(false);
     setShowFlightIntro(true);
-  };
+  }, []);
 
   const handleOpenBooking = (data = null) => {
     setModalInitialData(data);

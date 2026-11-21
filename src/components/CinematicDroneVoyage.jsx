@@ -51,16 +51,19 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Ensure active video is playing
+  // Ensure active video is playing and pause inactive videos to save CPU/GPU resources
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (vid) {
-        if (i === activeStageIdx) {
+        vid.muted = true;
+        if (i === activeStageIdx && isPlaying) {
           vid.play().catch(() => {});
+        } else if (i !== activeStageIdx) {
+          vid.pause();
         }
       }
     });
-  }, [activeStageIdx]);
+  }, [activeStageIdx, isPlaying]);
 
   const activeStage = CINEMATIC_JOURNEY_STAGES[activeStageIdx] || CINEMATIC_JOURNEY_STAGES[0];
 
