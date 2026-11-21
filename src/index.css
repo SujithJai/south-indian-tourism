@@ -91,3 +91,22 @@
 .gradient-dark-radial {
   background: radial-gradient(circle at center, rgba(11, 77, 59, 0.4) 0%, rgba(5, 30, 23, 0.95) 100%);
 }
+
+/* Organic Wave Ambient Breathing */
+@keyframes waveBreathe1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes waveBreathe2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2.5px); }
+}
+
+.wave-ambient-1 {
+  animation: waveBreathe1 8s ease-in-out infinite;
+}
+
+.wave-ambient-2 {
+  animation: waveBreathe2 9.5s ease-in-out infinite;
+}

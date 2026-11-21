@@ -1,4 +1,5 @@
 import React from 'react';
+import OrganicWaveDivider from './OrganicWaveDivider';
 import { 
   WEBSITE_SECTION_CARDS, 
   THEME_COLORS 
@@ -38,8 +39,12 @@ export default function WebsiteSectionsGrid({ onCardClick }) {
   };
 
   return (
-    <section id="website-sections" className="py-20 bg-[#F8F4E6] text-[#5A3E2B]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="website-sections" className="relative bg-[#F8F4E6] text-[#5A3E2B]">
+      
+      {/* Premium Organic Multi-Layer Wave Divider (Forest Green -> Golden Ribbon -> Warm Ivory Cream) */}
+      <OrganicWaveDivider />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 pb-20">
         
         {/* Section Header as in the Blueprint */}
         <div className="mb-10 pb-4 border-b border-[#147D64]/15 flex flex-col sm:flex-row items-start sm:items-end justify-between">
