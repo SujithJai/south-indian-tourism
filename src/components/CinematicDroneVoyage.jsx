@@ -268,20 +268,15 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
         </div>
 
         {/* Bottom Navigation & Scroll to Explore */}
-        <div className="relative z-30 pb-10 sm:pb-12 md:pb-14 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="relative z-30 pb-6 sm:pb-8 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex items-center justify-between gap-4">
           
-          {/* Left placeholder to keep center aligned */}
-          <div className="hidden sm:block w-36"></div>
-
-          {/* Center: "Scroll to Explore" from Mockup */}
+          {/* Left: "Scroll to Explore" Pill Badge - High Contrast, Crystal Clear on the side */}
           <button
             onClick={handleNextStage}
-            className="flex flex-col items-center text-center cursor-pointer hover:scale-105 transition-transform"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md border border-[#E7CFA3]/50 text-[#E7CFA3] hover:text-[#F4B400] text-xs font-bold tracking-wider uppercase shadow-xl hover:scale-105 active:scale-95 transition-all group"
           >
-            <span className="text-[11px] font-bold text-[#E7CFA3] tracking-widest uppercase flex items-center gap-1">
-              Scroll to Explore
-            </span>
-            <ChevronDown className="w-5 h-5 text-[#F4B400] animate-bounce mt-0.5" />
+            <ChevronDown className="w-4 h-4 text-[#F4B400] group-hover:translate-y-0.5 transition-transform animate-bounce" />
+            <span>Scroll to Explore</span>
           </button>
 
           {/* Right: Stage Stepper Pills */}
@@ -311,7 +306,9 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             (No horizontal cut, no cream gap above wave; video plays directly behind)
            ======================================================== */}
         <div 
-          className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none overflow-hidden"
+          className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none overflow-hidden transition-all duration-700 ease-out ${
+            activeStageIdx === 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+          }`}
           aria-hidden="true"
         >
           <svg

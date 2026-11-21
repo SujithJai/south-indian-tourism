@@ -49,7 +49,7 @@ export const CINEMATIC_JOURNEY_STAGES = [
     famousSpots: "Madurai, Rameswaram, Ooty, Thanjavur",
     droneVideo: "https://cdn.coverr.co/videos/coverr-mist-over-green-hills-3957/1080p.mp4",
     localVideo: "/videos/tamilnadu.mp4",
-    posterImage: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80",
+    posterImage: "/images/madurai.jpg",
     description: "Centuries of living Chola and Pandya temple legacy meets the misty shola ridges of Ooty and the holy ocean bridge of Rameswaram.",
     highlights: ["Madurai Meenakshi 14 Gopurams", "UNESCO Brihadisvara Temple", "Nilgiri Mountain Toy Train", "Rameswaram Sea Corridor"],
     startingPrice: "₹18,500"
@@ -64,7 +64,7 @@ export const CINEMATIC_JOURNEY_STAGES = [
     famousSpots: "Munnar, Alleppey, Kovalam, Thekkady",
     droneVideo: "https://cdn.coverr.co/videos/coverr-river-running-through-a-lush-forest-1478/1080p.mp4",
     localVideo: "/videos/kerala.mp4",
-    posterImage: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80",
+    posterImage: "/images/houseboat.jpg",
     description: "Drift along palm-fringed tranquil backwaters in a luxury private houseboat and breathe in crisp highland air amidst tea carpet hills.",
     highlights: ["Overnight Alleppey Houseboat", "Munnar Tea Museum & Mattupetty", "Kovalam Lighthouse Beach", "Periyar Spice Plantations"],
     startingPrice: "₹21,500"
@@ -79,7 +79,7 @@ export const CINEMATIC_JOURNEY_STAGES = [
     famousSpots: "Hampi, Coorg, Mysuru, Chikmagalur",
     droneVideo: "https://cdn.coverr.co/videos/coverr-flying-over-a-green-forest-1473/1080p.mp4",
     localVideo: "/videos/karnataka.mp4",
-    posterImage: "https://images.unsplash.com/photo-1600100397608-f010f443b772?auto=format&fit=crop&w=1920&q=80",
+    posterImage: "/images/mysore.jpg",
     description: "Traverse surreal boulder landscapes of the 14th-century Vijayanagara Empire and immerse in the fragrant rainforest coffee trails of Coorg.",
     highlights: ["Iconic Hampi Stone Chariot", "Illuminated Mysore Palace", "Abbey Falls in Coorg", "Chikmagalur Peak Trek"],
     startingPrice: "₹19,999"
@@ -94,7 +94,7 @@ export const CINEMATIC_JOURNEY_STAGES = [
     famousSpots: "Tirupati, Araku, Vizag, Hyderabad",
     droneVideo: "https://cdn.coverr.co/videos/coverr-waves-hitting-a-rocky-shore-5544/1080p.mp4",
     localVideo: "/videos/andhra.mp4",
-    posterImage: "https://images.unsplash.com/photo-1580294658515-63db974611e4?auto=format&fit=crop&w=1920&q=80",
+    posterImage: "/images/tirupati.jpg",
     description: "Soar over the Seven Sacred Hills of Lord Venkateswara at Tirumala, the tribal coffee vales of Araku, and royal Charminar monuments.",
     highlights: ["Tirupati Balaji Darshan", "Araku Valley & Borra Caves", "Rishikonda Beach Vizag", "Hyderabad Charminar & Pearls"],
     startingPrice: "₹16,800"
@@ -107,7 +107,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "popular-destinations",
     title: "Popular Destinations",
     subtitle: "Madurai, Munnar, Hampi, Pondicherry, Ooty & Mysuru",
-    image: "https://images.unsplash.com/photo-1600100397608-f010f443b772?auto=format&fit=crop&w=800&q=80",
+    image: "/images/destinations.jpg",
     icon: "temple",
     badge: "30+ Locations"
   },
@@ -115,7 +115,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "experiences",
     title: "Experiences",
     subtitle: "Tea estate walks, luxury houseboats & wildlife safaris",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80",
+    image: "/images/houseboat.jpg",
     icon: "experiences",
     badge: "Top Curated"
   },
@@ -123,7 +123,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "tours-packages",
     title: "Tours & Packages",
     subtitle: "Custom 5-Day, 7-Day and 10-Day day-by-day itineraries",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+    image: "/images/tourbus.jpg",
     icon: "packages",
     badge: "Best Value"
   },
@@ -131,7 +131,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "travel-guide",
     title: "Travel Guide",
     subtitle: "Best seasons, route plans, packing tips & local customs",
-    image: "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?auto=format&fit=crop&w=800&q=80",
+    image: "/images/travelguide.jpg",
     icon: "guide",
     badge: "Expert Advice"
   },
@@ -139,7 +139,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "culture-heritage",
     title: "Culture & Heritage",
     subtitle: "Shiva temples, Kathakali art, silk weaves & Dravidian crafts",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+    image: "/images/kathakali.jpg",
     icon: "culture",
     badge: "1000+ Yrs History"
   },
@@ -147,7 +147,7 @@ export const WEBSITE_SECTION_CARDS = [
     id: "plan-your-trip",
     title: "Plan Your Trip",
     subtitle: "Tailor-made quotations, verified drivers & Tempo Travellers",
-    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80",
+    image: "/images/munnar.jpg",
     icon: "trip",
     badge: "Free Quote in 10 Min"
   }
@@ -165,7 +165,7 @@ export const TOUR_PACKAGES = [
     price: "₹18,500",
     priceUnit: "per person",
     badge: "Most Popular",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+    image: "/images/madurai.jpg",
     description: "Living Dravidian temple architecture, Chola heritage towers, and cultural heartlands.",
     inclusions: ["Dedicated AC Tempo/Car", "All Tolls, Parking, Driver Bata", "Standard/Deluxe Hotel Stays", "Breakfast included", "Temple Darshan Guidance"],
     itinerary: [
@@ -186,7 +186,7 @@ export const TOUR_PACKAGES = [
     price: "₹21,500",
     priceUnit: "per person",
     badge: "Top Relaxing",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
+    image: "/images/houseboat.jpg",
     description: "Crisp mountain air in Munnar tea plantations followed by a private houseboat cruise in Alleppey.",
     inclusions: ["Full Time AC Transport", "Alleppey Houseboat with all 3 meals", "Munnar Hill Resort Stay", "Driver Allowance & Taxes", "Kathakali / Martial Arts Show"],
     itinerary: [
@@ -207,7 +207,7 @@ export const TOUR_PACKAGES = [
     price: "₹19,999",
     priceUnit: "per person",
     badge: "Royal Heritage",
-    image: "https://images.unsplash.com/photo-1580294658515-63db974611e4?auto=format&fit=crop&w=800&q=80",
+    image: "/images/mysore.jpg",
     description: "From the grand palaces of Mysuru to the misty coffee estates and roaring waterfalls of Coorg.",
     inclusions: ["Chauffeur Driven AC Vehicle", "Fuel, Toll, Inter-State Permits", "Coorg Resort / Hotel Stay", "Breakfast & Welcome Drink", "Sightseeing Entry Support"],
     itinerary: [
@@ -228,7 +228,7 @@ export const TOUR_PACKAGES = [
     price: "₹16,800",
     priceUnit: "per person",
     badge: "Divine Yatra",
-    image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
+    image: "/images/tirupati.jpg",
     description: "Darshan of Lord Venkateswara at Seven Sacred Hills with Srikalahasti Vayu Shiva temple.",
     inclusions: ["Dedicated AC Tempo Traveller", "Star Hotel Accommodations", "VIP Special Entry Darshan Support", "All Parking, Driver Bata & Tolls"],
     itinerary: [

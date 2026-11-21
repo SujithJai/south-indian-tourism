@@ -39,10 +39,10 @@ export default function SectionDetailModal({ activeCardId, onClose, onOpenBookin
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { name: "Madurai & Rameswaram", state: "Tamil Nadu", tag: "Temples & Ocean Bridge", img: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80" },
-                { name: "Ooty & Nilgiris", state: "Tamil Nadu", tag: "Blue Mountains & Toy Train", img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80" },
-                { name: "Munnar & Alleppey", state: "Kerala", tag: "Tea Valleys & Backwaters", img: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=80" },
-                { name: "Hampi & Coorg", state: "Karnataka", tag: "Stone Monuments & Coffee", img: "https://images.unsplash.com/photo-1600100397608-f010f443b772?auto=format&fit=crop&w=400&q=80" }
+                { name: "Madurai & Rameswaram", state: "Tamil Nadu", tag: "Temples & Ocean Bridge", img: "/images/madurai.jpg" },
+                { name: "Ooty & Nilgiris", state: "Tamil Nadu", tag: "Blue Mountains & Toy Train", img: "/images/munnar.jpg" },
+                { name: "Munnar & Alleppey", state: "Kerala", tag: "Tea Valleys & Backwaters", img: "/images/houseboat.jpg" },
+                { name: "Hampi & Coorg", state: "Karnataka", tag: "Stone Monuments & Coffee", img: "/images/mysore.jpg" }
               ].map((item, idx) => (
                 <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#147D64]/15 flex items-center gap-3 p-3 shadow-sm hover:border-[#F4B400] transition-colors">
                   <img src={item.img} alt={item.name} className="w-16 h-16 rounded-xl object-cover shrink-0" />
