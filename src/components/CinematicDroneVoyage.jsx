@@ -142,16 +142,22 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             );
           })}
 
-          {/* Light Left Vignette for Crisp Text Readability without Obscuring Drone Video */}
-          <div className="absolute inset-y-0 left-0 w-full sm:w-2/3 lg:w-1/2 z-10 bg-gradient-to-r from-black/75 via-black/35 to-transparent pointer-events-none"></div>
+          {/* 4-Edge Cinematic Light Gradients: Left, Right, Up, Bottom */}
+          {/* 1. Left Gradient (Soft vignette for crisp text) */}
+          <div className="absolute inset-y-0 left-0 w-80 sm:w-96 lg:w-[48%] z-10 bg-gradient-to-r from-black/70 via-black/30 to-transparent pointer-events-none"></div>
 
-          {/* Gentle Top & Bottom Fades for Navbar and Controls */}
-          <div className="absolute inset-x-0 top-0 h-28 z-10 bg-gradient-to-b from-black/50 via-black/15 to-transparent pointer-events-none"></div>
-          <div className="absolute inset-x-0 bottom-0 h-28 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+          {/* 2. Right Gradient (Soft right edge feathering) */}
+          <div className="absolute inset-y-0 right-0 w-44 sm:w-64 lg:w-80 z-10 bg-gradient-to-l from-black/55 via-black/15 to-transparent pointer-events-none"></div>
+
+          {/* 3. Up / Top Gradient (Soft top fade for navbar and badge) */}
+          <div className="absolute inset-x-0 top-0 h-32 sm:h-36 z-10 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+
+          {/* 4. Bottom Gradient (Soft bottom fade for scroll prompt and state pills) */}
+          <div className="absolute inset-x-0 bottom-0 h-32 sm:h-36 z-10 bg-gradient-to-t from-black/65 via-black/20 to-transparent pointer-events-none"></div>
         </div>
 
         {/* Top Spacer under Navbar */}
-        <div className="pt-24 px-6 sm:px-12 max-w-7xl mx-auto w-full flex items-center justify-between relative z-30">
+        <div className="pt-24 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex items-center justify-between relative z-30">
           
           {/* Timeline Badge */}
           <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#E7CFA3]/40 text-xs text-[#E7CFA3]">
@@ -186,9 +192,9 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
 
         </div>
 
-        {/* Left Corner Main Stage Content */}
-        <div className="relative z-30 max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 w-full flex-1 flex flex-col justify-center items-start text-left my-auto">
-          <div className="max-w-2xl">
+        {/* Left Corner Main Stage Content (Moved Firmly to the Left) */}
+        <div className="relative z-30 w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex-1 flex flex-col justify-center items-start text-left my-auto">
+          <div className="max-w-xl lg:max-w-2xl">
             
             {/* "EXPLORE SOUTH INDIA" in spaced Sandal #E7CFA3 */}
             <div className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.35em] text-[#E7CFA3] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] mb-2 flex items-center gap-2">
@@ -262,7 +268,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
         </div>
 
         {/* Bottom Navigation & Scroll to Explore */}
-        <div className="relative z-30 pb-6 px-6 sm:px-12 max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="relative z-30 pb-6 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           
           {/* Left: Replay Flight Intro */}
           <button

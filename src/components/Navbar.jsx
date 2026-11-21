@@ -37,7 +37,7 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
             : 'bg-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between">
+        <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 flex items-center justify-between">
           
           {/* Logo & Brand matching blueprint (Gopuram icon + South Indian Tourism) */}
           <a href="#drone-voyage" className="flex items-center gap-2.5 group">
