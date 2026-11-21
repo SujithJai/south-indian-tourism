@@ -303,16 +303,20 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
 
         {/* ========================================================
             Organic Multi-Layer Wave Transition DIRECTLY Over Video
-            (No horizontal cut, no cream gap above wave; video plays directly behind)
+            - Full-frame edge-to-edge bleed (-100 to 1540): ZERO side gaps or cutoffs
+            - Deep downward fill (y=320) + solid cream base: ZERO horizontal lines or seams
            ======================================================== */}
         <div 
-          className={`absolute bottom-0 left-0 right-0 z-20 pointer-events-none select-none overflow-hidden transition-all duration-700 ease-out ${
+          className={`absolute -bottom-2 -left-1 -right-1 z-20 pointer-events-none select-none overflow-hidden transition-all duration-700 ease-out ${
             activeStageIdx === 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
           }`}
           aria-hidden="true"
         >
+          {/* Solid Cream Base Apron Under Wave - Guaranteed No Dark Seam */}
+          <div className="absolute inset-x-0 -bottom-4 h-8 bg-[#F8F4E6] pointer-events-none"></div>
+
           <svg
-            viewBox="0 0 1440 240"
+            viewBox="-100 0 1640 240"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -335,37 +339,25 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
               </linearGradient>
             </defs>
 
-            {/* 1. Upper Deep Forest Green Wave Ribbon */}
+            {/* 1. Upper Deep Forest Green Wave Ribbon (Bleeds -100 to 1540, fills down to 320) */}
             <path
-              d="M 0,132 C 220,142 360,174 540,164 C 720,154 910,54 1070,54 C 1220,54 1335,104 1440,120 L 1440,240 L 0,240 Z"
+              d="M -100,130 C -40,131 -10,131 0,132 C 220,142 360,174 540,164 C 720,154 910,54 1070,54 C 1220,54 1335,104 1440,120 C 1475,125 1505,128 1540,130 L 1540,320 L -100,320 Z"
               fill="url(#waveForestGreenGrad)"
-              style={{
-                transform: `translate3d(${(scrollProgress - 0.5) * -12}px, ${Math.sin(scrollProgress * Math.PI) * -3}px, 0)`,
-                transition: "transform 0.15s ease-out"
-              }}
             />
 
-            {/* 2. Crisp Golden Ribbon Stripe (Contour along Crest) */}
+            {/* 2. Crisp Golden Ribbon Stripe (Full Frame Bleed -100 to 1540) */}
             <path
-              d="M 0,138 C 220,148 360,180 540,170 C 720,160 910,60 1070,60 C 1220,60 1335,110 1440,126"
+              d="M -100,136 C -40,137 -10,137 0,138 C 220,148 360,180 540,170 C 720,160 910,60 1070,60 C 1220,60 1335,110 1440,126 C 1475,131 1505,134 1540,136"
               stroke="url(#waveGoldStripeGrad)"
               strokeWidth="6"
-              strokeLinecap="round"
+              strokeLinecap="square"
               fill="none"
-              style={{
-                transform: `translate3d(${(scrollProgress - 0.5) * -16}px, ${Math.sin(scrollProgress * Math.PI) * -3.5}px, 0)`,
-                transition: "transform 0.15s ease-out"
-              }}
             />
 
-            {/* 3. Solid Warm Ivory Cream Body (#F8F4E6) */}
+            {/* 3. Solid Warm Ivory Cream Body (#F8F4E6) (Bleeds -100 to 1540, fills down to 320) */}
             <path
-              d="M 0,141 C 220,151 360,183 540,173 C 720,163 910,63 1070,63 C 1220,63 1335,113 1440,129 L 1440,240 L 0,240 Z"
+              d="M -100,139 C -40,140 -10,140 0,141 C 220,151 360,183 540,173 C 720,163 910,63 1070,63 C 1220,63 1335,113 1440,129 C 1475,134 1505,137 1540,139 L 1540,320 L -100,320 Z"
               fill="#F8F4E6"
-              style={{
-                transform: `translate3d(${(scrollProgress - 0.5) * -16}px, ${Math.sin(scrollProgress * Math.PI) * -3.5}px, 0)`,
-                transition: "transform 0.15s ease-out"
-              }}
             />
           </svg>
         </div>

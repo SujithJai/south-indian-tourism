@@ -38,7 +38,7 @@ export default function WebsiteSectionsGrid({ onCardClick }) {
   };
 
   return (
-    <section id="website-sections" className="relative bg-[#F8F4E6] text-[#5A3E2B] pt-8 sm:pt-14 pb-20">
+    <section id="website-sections" className="relative bg-[#F8F4E6] text-[#5A3E2B] -mt-2 pt-8 sm:pt-14 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header as in the Blueprint */}
