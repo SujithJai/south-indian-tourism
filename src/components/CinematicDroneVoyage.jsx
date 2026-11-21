@@ -270,14 +270,8 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
         {/* Bottom Navigation & Scroll to Explore */}
         <div className="relative z-30 pb-6 sm:pb-8 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20 w-full flex flex-col sm:flex-row items-center justify-between gap-4">
           
-          {/* Left: Replay Flight Intro */}
-          <button
-            onClick={onReplayFlightIntro}
-            className="text-xs font-bold text-[#E7CFA3] hover:text-[#F4B400] flex items-center gap-1.5 transition-colors"
-          >
-            <Plane className="w-3.5 h-3.5" />
-            <span>Replay Airplane Intro Video</span>
-          </button>
+          {/* Left placeholder to keep center aligned */}
+          <div className="hidden sm:block w-36"></div>
 
           {/* Center: "Scroll to Explore" from Mockup */}
           <button
@@ -365,18 +359,6 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             <path
               d="M 0,141 C 220,151 360,183 540,173 C 720,163 910,63 1070,63 C 1220,63 1335,113 1440,129 L 1440,240 L 0,240 Z"
               fill="#F8F4E6"
-            />
-
-            {/* 4. Bottom-Left Secondary Wave Accent (matching user image) */}
-            <path
-              d="M 0,186 C 80,186 150,212 215,240 L 0,240 Z"
-              fill="#0B4D3B"
-            />
-            <path
-              d="M 0,186 C 80,186 150,212 215,240"
-              stroke="url(#waveGoldStripeGrad)"
-              strokeWidth="4"
-              fill="none"
             />
           </svg>
         </div>
