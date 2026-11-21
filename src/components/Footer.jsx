@@ -25,12 +25,12 @@ export default function Footer({ onSelectDestination }) {
           
           {/* Column 1: Business Information */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md group-hover:scale-105 transition-transform">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
-                </svg>
-              </div>
+            <Link to="/" className="flex items-center gap-3 group">
+              <img 
+                src="/images/logo.jpg" 
+                alt="South Indian Tourism" 
+                className="w-12 h-12 rounded-xl object-contain bg-white p-1 shadow-md border border-[#F4B400]/40 group-hover:scale-105 transition-transform shrink-0" 
+              />
               <span className="font-heading text-xl font-bold text-white block leading-tight group-hover:text-[#E7CFA3] transition-colors">
                 South Indian Tourism
               </span>

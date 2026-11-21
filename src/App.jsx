@@ -4,6 +4,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
+import SideAirplaneScrollProgress from './components/SideAirplaneScrollProgress';
 import FlightMapIntro from './components/FlightMapIntro';
 import BookingModal from './components/BookingModal';
 import DestinationSearchModal from './components/DestinationSearchModal';
@@ -151,6 +152,9 @@ export default function App() {
         <FloatingActions 
           onOpenBookingModal={() => handleOpenBooking()}
         />
+
+        {/* Side Flight Path Airplane Scroll Tracker */}
+        <SideAirplaneScrollProgress />
 
         {/* Watch Video Fullscreen Modal */}
         <WatchVideoModal 

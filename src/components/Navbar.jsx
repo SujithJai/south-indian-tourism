@@ -50,11 +50,11 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
           
           {/* Logo & Brand matching blueprint */}
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#F4B400] to-[#E7CFA3] flex items-center justify-center text-[#0B4D3B] shadow-md group-hover:scale-105 transition-transform shrink-0">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L4 7v2h1v10H3v2h18v-2h-2V9h1V7l-8-5zm0 2.5L17.5 8H6.5L12 4.5zM7 11h2v8H7v-8zm4 0h2v8h-2v-8zm4 0h2v8h-2v-8z"/>
-              </svg>
-            </div>
+            <img 
+              src="/images/logo.jpg" 
+              alt="South Indian Tourism" 
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-contain bg-white p-0.5 shadow-md border border-[#F4B400]/40 group-hover:scale-105 transition-transform shrink-0" 
+            />
             <span className="font-heading text-sm sm:text-base font-bold tracking-tight text-white block leading-tight group-hover:text-[#E7CFA3] transition-colors drop-shadow">
               South Indian <span className="font-normal opacity-90">Tourism</span>
             </span>
@@ -113,7 +113,14 @@ export default function Navbar({ onOpenSearch, onOpenBookingModal }) {
           <div className="fixed top-0 right-0 bottom-0 w-80 bg-[#0B4D3B] p-6 flex flex-col justify-between overflow-y-auto">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="font-heading text-lg font-bold text-white">South Indian Tourism</span>
+                <div className="flex items-center gap-2.5">
+                  <img 
+                    src="/images/logo.jpg" 
+                    alt="South Indian Tourism" 
+                    className="w-8 h-8 rounded-full object-contain bg-white p-0.5 shadow border border-[#F4B400]/40 shrink-0" 
+                  />
+                  <span className="font-heading text-lg font-bold text-white">South Indian Tourism</span>
+                </div>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-1">
                   <X className="w-5 h-5" />
                 </button>
