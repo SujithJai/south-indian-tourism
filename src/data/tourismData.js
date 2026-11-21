@@ -26,6 +26,9 @@ export const BUSINESS_INFO = {
   workingHours: "Monday – Sunday: 6:00 AM – 10:00 PM"
 };
 
+// Flight Intro Airplane Video
+export const AIRPLANE_INTRO_VIDEO = "/videos/airplane_intro.mp4";
+
 // Flight Intro Map Nodes (0 - 10s Timeline)
 export const FLIGHT_MAP_NODES = [
   { id: "hyderabad", name: "Hyderabad", state: "Telangana", x: 62, y: 18, delay: "0.2s" },

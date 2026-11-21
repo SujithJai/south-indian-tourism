@@ -276,7 +276,7 @@ export default function CinematicDroneVoyage({ onOpenBookingModal, onOpenVideoMo
             className="text-xs font-bold text-[#E7CFA3] hover:text-[#F4B400] flex items-center gap-1.5 transition-colors"
           >
             <Plane className="w-3.5 h-3.5" />
-            <span>Replay Flight Map Intro (0 - 10s)</span>
+            <span>Replay Airplane Intro Video</span>
           </button>
 
           {/* Center: "Scroll to Explore" from Mockup */}
